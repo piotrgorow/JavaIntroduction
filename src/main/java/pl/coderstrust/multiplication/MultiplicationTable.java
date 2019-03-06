@@ -7,32 +7,18 @@ public class MultiplicationTable {
     }
 
     public static void printMultiplicationTable(int size) {
-        System.out.print("  ");
+        System.out.printf("%5s", "");
         for (int i = 1; i <= size; i++) {
-            if (i < 10) {
-                System.out.print("     " + i);
-            } else {
-                System.out.print("    " + i);
-            }
+            System.out.printf("%5d", i);
         }
-        System.out.println("\n");
-        for (int j = 1; j <= size; j++) {
-            if (j < 10) {
-                System.out.print(" " + j);
-            } else {
-                System.out.print(j);
+        System.out.println();
+        for (int i = 1; i <= size; i++) {
+            System.out.printf("%5d", i);
+            for (int j = 1; j <= size; j++) {
+                int result = i * j;
+                System.out.printf("%5d", result);
             }
-            for (int i = 1; i <= size; i++) {
-                if (i * j < 10) {
-                    System.out.print("     ");
-                } else if (i * j > 9 && i * j < 100) {
-                    System.out.print("    ");
-                } else {
-                    System.out.print("   ");
-                }
-                System.out.print(i * j);
-            }
-            System.out.println("\n");
+            System.out.println();
         }
     }
 }
