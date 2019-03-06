@@ -2,14 +2,18 @@ package pl.coderstrust.foobar;
 
 public class FooBar {
 
-    public static void fooBar() {
+    public static void main(String[] args) {
+        printFooBar(100);
+    }
 
-        for (int myCounter = 0; myCounter <= 100; myCounter++) {
-            System.out.print(myCounter + " ");
-            if (myCounter % 3 == 0 && myCounter != 0) {
+    public static void printFooBar(int number) {
+
+        for (int i = 0; i <= number; i++) {
+            System.out.print(i + " ");
+            if (i % 3 == 0) {
                 System.out.print("Foo");
             }
-            if (myCounter % 5 == 0 && myCounter != 0) {
+            if (i % 5 == 0) {
                 System.out.print("Bar");
             }
             System.out.println();
