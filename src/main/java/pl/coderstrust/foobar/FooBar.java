@@ -7,7 +7,6 @@ public class FooBar {
     }
 
     public static void printFooBar(int number) {
-
         for (int i = 0; i <= number; i++) {
             System.out.print(i + " ");
             if (i % 3 == 0) {
