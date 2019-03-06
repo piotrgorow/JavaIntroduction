@@ -3,7 +3,7 @@ package pl.coderstrust.christmas;
 public class ChristmasTree {
 
     public static void main(String[] args) {
-        printChristmasTree(6);
+        printChristmasTree(3);
     }
 
     public static void printChristmasTree(int size) {
@@ -16,10 +16,14 @@ public class ChristmasTree {
             }
             System.out.println();
         }
-        for (int i = 1; i < size - 1; i++) {
+        printChristmasTreeTrunk(size);
+    }
+
+    private static void printChristmasTreeTrunk(int heightOfTree) {
+        for (int i = 1; i < heightOfTree - 1; i++) {
             System.out.print(" ");
         }
-        if (size < 4) {
+        if (heightOfTree < 4) {
             System.out.println(" *");
         } else {
             System.out.println("***");
