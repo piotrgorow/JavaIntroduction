@@ -7,27 +7,27 @@ public class PascalTriangle {
     }
 
     public static void printPascalTriangle(int number) {
-        if (num > 20 || num < 0) {
-            System.out.println("Invalid Value!");
-        } else {
-            for (int n = 0; n <= num; n++) {
-                for (int i = n; i < num; i++) {
-                    System.out.printf("%4s", " ");
-                }
-                for (int k = 0; k <= n; k++) {
-                    long nodeValue = countFactorial(n) / (countFactorial(k) * countFactorial(n - k));
-                    System.out.printf("%8d", result);
-                }
-                System.out.println();
+        if (number < 0 || number > 20) {
+            System.out.println("Invalid Value! Please enter value between 0 and 20.");
+            return;
+        }
+        for (int i = 0; i <= number; i++) {
+            for (int j = i; j < number; j++) {
+                System.out.printf("%4s", " ");
             }
+            for (int j = 0; j <= i; j++) {
+                long nodeValue = factorial(i) / (factorial(j) * factorial(i - j));
+                System.out.printf("%8d", nodeValue);
+            }
+            System.out.println();
         }
     }
 
     private static long factorial(int number) {
-        long result= 1;
+        long result = 1;
         for (int i = 1; i <= number; i++) {
-            factorial *= i;
+            result *= i;
         }
-        return factorial;
+        return result;
     }
 }
