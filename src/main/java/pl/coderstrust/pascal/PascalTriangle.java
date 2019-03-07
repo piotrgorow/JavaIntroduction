@@ -6,7 +6,7 @@ public class PascalTriangle {
         printPascalTriangle(10);
     }
 
-    public static void printPascalTriangle(int num) {
+    public static void printPascalTriangle(int number) {
         if (num > 20 || num < 0) {
             System.out.println("Invalid Value!");
         } else {
