@@ -24,7 +24,7 @@ public class PascalTriangle {
     }
 
     private static long factorial(int number) {
-        long factorial = 1;
+        long result= 1;
         for (int i = 1; i <= number; i++) {
             factorial *= i;
         }
