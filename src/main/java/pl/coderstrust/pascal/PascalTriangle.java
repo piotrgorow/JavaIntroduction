@@ -23,7 +23,7 @@ public class PascalTriangle {
         }
     }
 
-    private static long countFactorial(int number) {
+    private static long factorial(int number) {
         long factorial = 1;
         for (int i = 1; i <= number; i++) {
             factorial *= i;
