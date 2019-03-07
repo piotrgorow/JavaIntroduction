@@ -15,7 +15,7 @@ public class PascalTriangle {
                     System.out.printf("%4s", " ");
                 }
                 for (int k = 0; k <= n; k++) {
-                    long result = countFactorial(n) / (countFactorial(k) * countFactorial(n - k));
+                    long nodeValue = countFactorial(n) / (countFactorial(k) * countFactorial(n - k));
                     System.out.printf("%8d", result);
                 }
                 System.out.println();
