@@ -11,8 +11,8 @@ public class PascalTriangle {
             System.out.println("Invalid Value! Please enter value between 0 and 20.");
             return;
         }
-        for (int i = 0; i <= number; i++) {
-            for (int j = i; j < number; j++) {
+        for (int i = 0; i < number; i++) {
+            for (int j = i + 1; j < number; j++) {
                 System.out.printf("%4s", " ");
             }
             for (int j = 0; j <= i; j++) {
