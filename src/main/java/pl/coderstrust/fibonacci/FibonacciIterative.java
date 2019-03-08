@@ -9,8 +9,9 @@ public class FibonacciIterative {
     public static long fibonacci(int fibonacciNumberInOrder) {
         long previousElement = 1L;
         long currentElement = 1L;
+        long tmp;
         for (int i = 1; i < fibonacciNumberInOrder - 1; i++) {
-            long tmp = currentElement;
+            tmp = currentElement;
             currentElement += previousElement;
             previousElement = tmp;
         }
