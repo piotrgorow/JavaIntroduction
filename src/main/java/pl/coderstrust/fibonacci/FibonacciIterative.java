@@ -7,10 +7,16 @@ public class FibonacciIterative {
     }
 
     public static long fibonacci(int fibonacciNumberInOrder) {
-        long previousElement = 1L;
+        if (fibonacciNumberInOrder < 0) {
+            return -1;
+        }
+        if (fibonacciNumberInOrder < 2) {
+            return fibonacciNumberInOrder;
+        }
+        long previousElement = 0L;
         long currentElement = 1L;
         long tmp;
-        for (int i = 1; i < fibonacciNumberInOrder - 1; i++) {
+        for (int i = 2; i <= fibonacciNumberInOrder; i++) {
             tmp = currentElement;
             currentElement += previousElement;
             previousElement = tmp;

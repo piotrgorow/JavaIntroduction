@@ -7,6 +7,9 @@ public class FibonacciRecursive {
     }
 
     public static long fibonacci(int fibonacciNumberInOrder) {
+        if (fibonacciNumberInOrder < 0) {
+            return -1;
+        }
         if (fibonacciNumberInOrder < 2) {
             return fibonacciNumberInOrder;
         }
