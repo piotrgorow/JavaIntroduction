@@ -4,41 +4,55 @@ import java.util.Arrays;
 
 public class SieveOfEratosthenes {
 
+    public static int MARKER = -1;
+
     public static void main(String[] args) {
-        System.out.println(Arrays.toString(SieveOfEratosthenes.sieve(12)));
+        System.out.println(Arrays.toString(SieveOfEratosthenes.sieve(100)));
     }
 
     public static int[] sieve(int maximumNumber) {
         if (maximumNumber < 2) {
-            return new int[]{-1};
+            return new int[]{};
         }
-        int[] arraySieve = new int[maximumNumber + 1];
-        for (int i = 2; i <= maximumNumber; i++) {
-            arraySieve[i] = i;
-        }
-        int i = 2;
-        while (i <= Math.sqrt(maximumNumber)) {
-            for (int j = i + i; j <= maximumNumber; j += i) {
-                arraySieve[j] = 0;
+        int[] array = createArrayOfNumbers(maximumNumber + 1);
+        for (int i = 0; i < array.length; i++) {
+            if (array[i] < 2) {
+                array[i] = MARKER;
+                continue;
             }
-            while (i <= Math.sqrt(maximumNumber)) {
-                i++;
-                if (arraySieve[i] != 0) {
-                    break;
-                }
+            markMultiplies(array, i);
+        }
+        return filterPrimes(array);
+    }
+
+    private static int[] createArrayOfNumbers(int size) {
+        int[] result = new int[size];
+        for (int i = 0; i < size; i++) {
+            result[i] = i;
+        }
+        return result;
+    }
+
+    private static void markMultiplies(int[] array, int number) {
+        for (int i = 2 * number; i < array.length; i++) {
+            if (array[i] % number == 0) {
+                array[i] = MARKER;
             }
         }
-        i = 0;
-        for (int j = 2; j < maximumNumber + 1; j++) {
-            if (arraySieve[j] != 0) {
+    }
+
+    private static int[] filterPrimes(int[] numbers) {
+        int i = 0;
+        for (int x : numbers) {
+            if (x != MARKER) {
                 i++;
             }
         }
         int[] result = new int[i];
         i = 0;
-        for (int j = 2; j <= maximumNumber; j++) {
-            if (arraySieve[j] != 0) {
-                result[i] = arraySieve[j];
+        for (int x : numbers) {
+            if (x != MARKER) {
+                result[i] = x;
                 i++;
             }
         }
