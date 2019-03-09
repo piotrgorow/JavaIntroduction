@@ -12,18 +12,19 @@ public class BubbleSort {
 
     public static int[] sort(int[] array) {
         int[] result = array.clone();
-        boolean isChange;
-        do {
-            isChange = false;
-            for (int i = 0; i < result.length - 1; i++) {
-                if (result[i] > result[i + 1]) {
-                    isChange = true;
-                    int tmp = result[i];
-                    result[i] = result[i + 1];
-                    result[i + 1] = tmp;
+        for (int i = 0; i < result.length; i++) {
+            for (int j = 0; j < result.length - i - 1; j++) {
+                if (result[j] > result[j + 1]) {
+                    swapElementsInArray(result, j, j + 1);
                 }
             }
-        } while (isChange);
+        }
         return result;
+    }
+
+    private static void swapElementsInArray(int[] array, int indexOfFirstElementToSwap, int indexOfSecondElementToSwap) {
+        int tmp = array[indexOfFirstElementToSwap];
+        array[indexOfFirstElementToSwap] = array[indexOfSecondElementToSwap];
+        array[indexOfSecondElementToSwap] = tmp;
     }
 }
