@@ -43,16 +43,16 @@ public class SieveOfEratosthenes {
 
     private static int[] filterPrimes(int[] numbers) {
         int i = 0;
-        for (int x : numbers) {
-            if (x != MARKER) {
+        for (int j : numbers) {
+            if (j != MARKER) {
                 i++;
             }
         }
         int[] result = new int[i];
         i = 0;
-        for (int x : numbers) {
-            if (x != MARKER) {
-                result[i] = x;
+        for (int j : numbers) {
+            if (j != MARKER) {
+                result[i] = j;
                 i++;
             }
         }
