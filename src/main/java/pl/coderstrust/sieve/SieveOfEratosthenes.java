@@ -4,50 +4,47 @@ import java.util.Arrays;
 
 public class SieveOfEratosthenes {
 
-    public static int MARKER = -1;
+    public static final int MARKER = -1;
 
     public static void main(String[] args) {
         System.out.println(Arrays.toString(SieveOfEratosthenes.sieve(100)));
     }
 
     public static int[] sieve(int maximumNumber) {
-        if (maximumNumber < 2) {
-            return new int[]{};
-        }
-        int[] array = createArrayOfNumbers(maximumNumber + 1);
-        for (int i = 0; i < array.length; i++) {
-            if (array[i] < 2) {
-                array[i] = MARKER;
-                continue;
-            }
-            markMultiplies(array, i);
-        }
+        int[] array = createArrayOfNumbers(0, maximumNumber, 1);
         return filterPrimes(array);
     }
 
-    private static int[] createArrayOfNumbers(int size) {
+    private static int[] createArrayOfNumbers(int begin, int end, int step) {
+        int size = ((end - begin) / step) + 1;
+        if (size < 2) {
+            return new int[]{};
+        }
         int[] result = new int[size];
         for (int i = 0; i < size; i++) {
             result[i] = i;
+        }
+        for (int i = 0; i < result.length; i++) {
+            if (result[i] < 2) {
+                result[i] = MARKER;
+                continue;
+            }
+            markMultiplies(result, i);
         }
         return result;
     }
 
     private static void markMultiplies(int[] array, int number) {
-        for (int i = 2 * number; i < array.length; i++) {
-            if (array[i] % number == 0) {
-                array[i] = MARKER;
-            }
+        if (array[number] == MARKER) {
+            return;
+        }
+        for (int i = 2 * number; i < array.length; i += number) {
+            array[i] = MARKER;
         }
     }
 
     private static int[] filterPrimes(int[] numbers) {
-        int i = 0;
-        for (int j : numbers) {
-            if (j != MARKER) {
-                i++;
-            }
-        }
+        int i = numberOfPrimes(numbers);
         int[] result = new int[i];
         i = 0;
         for (int j : numbers) {
@@ -57,5 +54,15 @@ public class SieveOfEratosthenes {
             }
         }
         return result;
+    }
+
+    private static int numberOfPrimes(int[] numbers) {
+        int i = 0;
+        for (int j : numbers) {
+            if (j != MARKER) {
+                i++;
+            }
+        }
+        return i;
     }
 }
