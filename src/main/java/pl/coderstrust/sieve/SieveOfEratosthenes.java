@@ -24,14 +24,18 @@ public class SieveOfEratosthenes {
         for (int i = 0; i < size; i++) {
             result[i] = i;
         }
-        for (int i = 0; i < result.length; i++) {
-            if (result[i] < 2) {
-                result[i] = MARKER;
+        return result;
+    }
+
+    private static int[] filterPrimes(int[] array) {
+        for (int i = 0; i < array.length; i++) {
+            if (array[i] < 2) {
+                array[i] = MARKER;
                 continue;
             }
-            markMultiplies(result, i);
+            markMultiplies(array, i);
         }
-        return result;
+        return collectPrimes(array);
     }
 
     private static void markMultiplies(int[] array, int number) {
@@ -43,7 +47,7 @@ public class SieveOfEratosthenes {
         }
     }
 
-    private static int[] filterPrimes(int[] numbers) {
+    private static int[] collectPrimes(int[] numbers) {
         int i = numberOfPrimes(numbers);
         int[] result = new int[i];
         i = 0;
