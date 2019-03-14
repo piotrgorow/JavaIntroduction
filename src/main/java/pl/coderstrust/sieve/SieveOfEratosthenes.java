@@ -28,11 +28,8 @@ public class SieveOfEratosthenes {
     }
 
     private static int[] filterPrimes(int[] array) {
+        array[0] = array[1] = MARKER;
         for (int i = 0; i < array.length; i++) {
-            if (array[i] < 2) {
-                array[i] = MARKER;
-                continue;
-            }
             markMultiplies(array, i);
         }
         return collectPrimes(array);
