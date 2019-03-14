@@ -1,9 +1,6 @@
 first line
 second line
 my third line
+fourth line was moved
 five lines was added
 stxth line was added
-fourth line was moved
-
-
-
