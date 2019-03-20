@@ -1,30 +1,28 @@
 package pl.coderstrust.foobar;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 public class FooBar {
 
     public static void main(String[] args) {
-        printFooBar(100);
+        System.out.println((Arrays.toString(getFooBar(100).toArray())));
     }
 
-    public static String[] printFooBar(int number) {
-        if (number < 0) {
-            return new String[]{};
-        }
-        String[] result = new String[number + 1];
-        String line;
+    public static List<String> getFooBar(int number) {
+        List<String> result = new ArrayList<>();
+        StringBuilder line = new StringBuilder();
         for (int i = 0; i <= number; i++) {
-            System.out.print(i + " ");
-            line = i + " ";
+            line.delete(0, line.length());
+            line.append(i + " ");
             if (i % 3 == 0) {
-                System.out.print("Foo");
-                line += "Foo";
+                line.append("Foo");
             }
             if (i % 5 == 0) {
-                System.out.print("Bar");
-                line += "Bar";
+                line.append("Bar");
             }
-            System.out.println();
-            result[i] = line;
+            result.add(line.toString());
         }
         return result;
     }
