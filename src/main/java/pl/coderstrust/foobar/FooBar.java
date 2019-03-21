@@ -14,7 +14,6 @@ public class FooBar {
         List<String> result = new ArrayList<>();
         StringBuilder line = new StringBuilder();
         for (int i = 0; i <= number; i++) {
-            line.delete(0, line.length());
             line.append(i + " ");
             if (i % 3 == 0) {
                 line.append("Foo");
@@ -23,6 +22,7 @@ public class FooBar {
                 line.append("Bar");
             }
             result.add(line.toString());
+            line.delete(0, line.length());
         }
         return result;
     }

@@ -9,31 +9,27 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Stream;
 
-import static org.junit.jupiter.api.Assertions.assertArrayEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class FooBarTest {
 
-    private static Stream<Arguments> createWordsWithLength() {
+    private static Stream<Arguments> fooBarArguments() {
+        List<String> result15 = new ArrayList<>(Arrays.asList("0 FooBar", "1 ", "2 ", "3 Foo", "4 ", "5 Bar", "6 Foo", "7 ", "8 ", "9 Foo", "10 Bar", "11 ", "12 Foo", "13 ", "14 ", "15 FooBar"));
+        List<String> result0 = new ArrayList<>(Arrays.asList("0 FooBar"));
+        List<String> result_15 = new ArrayList<>();
         return Stream.of(
-                Arguments.of("FooBar", 15),
-                Arguments.of("FooBar", 0),
-                Arguments.of("FooBar", -15));
+                Arguments.of(15, result15),
+                Arguments.of(0, result0),
+                Arguments.of(-15, result_15));
     }
 
     @ParameterizedTest
-    @MethodSource("createWordsWithLength")
-    void shouldReturnCorrectFooBar(String word, int number) {
-        String[] fooBar = {"0 FooBar", "1 ", "2 ", "3 Foo", "4 ", "5 Bar", "6 Foo", "7 ", "8 ", "9 Foo", "10 Bar", "11 ", "12 Foo", "13 ", "14 ", "15 FooBar"};
-        List<String> expected = new ArrayList<>(Arrays.asList(fooBar));
-        int element = number;
-        if (element < 0) {
-            element = -1;
-        }
-
+    @MethodSource("fooBarArguments")
+    void shouldReturnCorrectFooBar(int number, List<String> expected) {
         //when
         List<String> result = FooBar.getFooBar(number);
 
         //then
-        assertArrayEquals(expected.subList(0, element + 1).toArray(), result.toArray());
+        assertEquals(expected, result);
     }
 }
