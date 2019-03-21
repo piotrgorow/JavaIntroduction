@@ -12,12 +12,6 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class FooBarTest {
 
-    private static Stream<Arguments> fooBarArguments() {
-        return Stream.of(
-                Arguments.of(15, Arrays.asList("0 FooBar", "1 ", "2 ", "3 Foo", "4 ", "5 Bar", "6 Foo", "7 ", "8 ", "9 Foo", "10 Bar", "11 ", "12 Foo", "13 ", "14 ", "15 FooBar")),
-                Arguments.of(0, Arrays.asList("0 FooBar")));
-    }
-
     @ParameterizedTest
     @MethodSource("fooBarArguments")
     void shouldReturnCorrectFooBar(int number, List<String> expected) {
@@ -27,5 +21,11 @@ public class FooBarTest {
 
         //then
         assertEquals(expected, result);
+    }
+
+    private static Stream<Arguments> fooBarArguments() {
+        return Stream.of(
+                Arguments.of(15, Arrays.asList("0 FooBar", "1 ", "2 ", "3 Foo", "4 ", "5 Bar", "6 Foo", "7 ", "8 ", "9 Foo", "10 Bar", "11 ", "12 Foo", "13 ", "14 ", "15 FooBar")),
+                Arguments.of(0, Arrays.asList("0 FooBar")));
     }
 }
