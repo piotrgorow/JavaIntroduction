@@ -7,10 +7,16 @@ import java.util.List;
 public class FooBar {
 
     public static void main(String[] args) {
-        System.out.println((Arrays.toString(getFooBar(100).toArray())));
+        System.out.println((Arrays.toString(getFooBar(null).toArray())));
     }
 
-    public static List<String> getFooBar(int number) {
+    public static List<String> getFooBar(Integer number) throws IllegalArgumentException {
+        if (number == null) {
+            throw new IllegalArgumentException("Parameter number is null!");
+        }
+        if (number < 0) {
+            throw new IllegalArgumentException("Parameter number is lower than zero!");
+        }
         List<String> result = new ArrayList<>();
         StringBuilder line = new StringBuilder();
         for (int i = 0; i <= number; i++) {
