@@ -10,7 +10,7 @@ public class FooBar {
         System.out.println((Arrays.toString(getFooBar(null).toArray())));
     }
 
-    public static List<String> getFooBar(Integer number) throws IllegalArgumentException {
+    public static List<String> getFooBar(int number) throws IllegalArgumentException {
         if (number == null) {
             throw new IllegalArgumentException("Parameter number is null!");
         }
