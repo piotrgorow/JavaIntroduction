@@ -15,7 +15,7 @@ public class FooBar {
             throw new IllegalArgumentException("Parameter number is null!");
         }
         if (number < 0) {
-            throw new IllegalArgumentException("Parameter number is lower than zero!");
+            throw new IllegalArgumentException("Number cannot be lower than zero.");
         }
         List<String> result = new ArrayList<>();
         StringBuilder line = new StringBuilder();
