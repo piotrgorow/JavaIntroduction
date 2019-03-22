@@ -32,8 +32,6 @@ public class FooBarTest {
 
     @Test
     void testGetFooBarExpectedException() {
-        Assertions.assertThrows(IllegalArgumentException.class, () -> {
-            FooBar.getFooBar(-15);
-        });
+        Assertions.assertThrows(IllegalArgumentException.class, () -> FooBar.getFooBar(-15));
     }
 }
