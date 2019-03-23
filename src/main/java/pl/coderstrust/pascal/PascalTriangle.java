@@ -1,26 +1,32 @@
 package pl.coderstrust.pascal;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class PascalTriangle {
 
     public static void main(String[] args) {
-        printPascalTriangle(10);
+        getPascalTriangle(5).forEach(System.out::println);
     }
 
-    public static void printPascalTriangle(int number) {
+    public static List<String> getPascalTriangle(int number) {
         if (number < 0 || number > 20) {
-            System.out.println("Invalid Value! Please enter value between 0 and 20.");
-            return;
+            throw new IllegalArgumentException("Number cannot be lower than zero or bigger than 20.");
         }
+        StringBuilder line = new StringBuilder();
+        List<String> result = new ArrayList<>();
         for (int i = 0; i < number; i++) {
             for (int j = i + 1; j < number; j++) {
-                System.out.printf("%4s", " ");
+                line.append("    ");
             }
             for (int j = 0; j <= i; j++) {
                 long nodeValue = factorial(i) / (factorial(j) * factorial(i - j));
-                System.out.printf("%8d", nodeValue);
+                line.append(getNumberInField(nodeValue, 8));
             }
-            System.out.println();
+            result.add(line.toString());
+            line.delete(0, line.length());
         }
+        return result;
     }
 
     private static long factorial(int number) {
@@ -28,6 +34,15 @@ public class PascalTriangle {
         for (int i = 1; i <= number; i++) {
             result *= i;
         }
+        return result;
+    }
+
+    private static StringBuilder getNumberInField(long number, int width) {
+        StringBuilder result = new StringBuilder();
+        for (int i = 0; i < width - String.valueOf(number).length(); i++) {
+            result.append(" ");
+        }
+        result.append(number);
         return result;
     }
 }
