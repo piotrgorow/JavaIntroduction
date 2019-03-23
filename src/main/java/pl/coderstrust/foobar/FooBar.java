@@ -10,7 +10,7 @@ public class FooBar {
         System.out.println((Arrays.toString(getFooBar(100).toArray())));
     }
 
-    public static List<String> getFooBar(int number) throws IllegalArgumentException {
+    public static List<String> getFooBar(int number) {
         if (number < 0) {
             throw new IllegalArgumentException("Number cannot be lower than zero.");
         }

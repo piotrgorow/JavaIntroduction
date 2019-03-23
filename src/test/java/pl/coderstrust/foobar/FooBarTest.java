@@ -1,7 +1,5 @@
 package pl.coderstrust.foobar;
 
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
@@ -11,6 +9,7 @@ import java.util.List;
 import java.util.stream.Stream;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class FooBarTest {
 
@@ -30,8 +29,16 @@ public class FooBarTest {
                 Arguments.of(0, Arrays.asList("0 FooBar")));
     }
 
-    @Test
-    void shouldThrowExceptionForInvalidArguments() {
-        assertThrows(IllegalArgumentException.class, () -> FooBar.getFooBar(-15));
+    @ParameterizedTest
+    @MethodSource("exceptionsArguments")
+    void shouldThrowExceptionForInvalidArguments(int number) {
+        assertThrows(IllegalArgumentException.class, () -> FooBar.getFooBar(number));
+    }
+
+    private static Stream<Arguments> exceptionsArguments() {
+        return Stream.of(
+                Arguments.of(-1),
+                Arguments.of(-3),
+                Arguments.of(-100));
     }
 }
