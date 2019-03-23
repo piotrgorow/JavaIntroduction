@@ -1,32 +1,44 @@
 package pl.coderstrust.christmas;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class ChristmasTree {
 
     public static void main(String[] args) {
-        printChristmasTree(3);
+        getChristmasTree(10).forEach(System.out::println);
     }
 
-    public static void printChristmasTree(int size) {
+    public static List<String> getChristmasTree(int size) {
+        if (size < 0) {
+            throw new IllegalArgumentException("Number cannot be lower than zero.");
+        }
+        StringBuilder line = new StringBuilder();
+        List<String> result = new ArrayList<>();
         for (int i = 1; i <= size; i++) {
             for (int j = 1; j <= size - i; j++) {
-                System.out.print(" ");
+                line.append(" ");
             }
             for (int j = 1; j <= (i * 2) - 1; j++) {
-                System.out.print("*");
+                line.append("*");
             }
-            System.out.println();
+            result.add(line.toString());
+            line.delete(0, line.length());
         }
-        printChristmasTreeTrunk(size);
+        result.add(getChristmasTreeTrunk(size).toString());
+        return result;
     }
 
-    private static void printChristmasTreeTrunk(int heightOfTree) {
+    private static StringBuilder getChristmasTreeTrunk(int heightOfTree) {
+        StringBuilder result = new StringBuilder();
         for (int i = 1; i < heightOfTree - 1; i++) {
-            System.out.print(" ");
+            result.append(" ");
         }
         if (heightOfTree < 4) {
-            System.out.println(" *");
+            result.append(" *");
         } else {
-            System.out.println("***");
+            result.append("***");
         }
+        return result;
     }
 }
