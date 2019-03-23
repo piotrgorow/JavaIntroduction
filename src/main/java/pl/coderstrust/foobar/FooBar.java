@@ -1,13 +1,12 @@
 package pl.coderstrust.foobar;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class FooBar {
 
     public static void main(String[] args) {
-        System.out.println((Arrays.toString(getFooBar(100).toArray())));
+        getFooBar(100).forEach(System.out::println);
     }
 
     public static List<String> getFooBar(int number) {
