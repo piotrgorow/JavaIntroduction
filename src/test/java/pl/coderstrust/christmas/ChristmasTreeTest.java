@@ -26,8 +26,9 @@ class ChristmasTreeTest {
     private static Stream<Arguments> christmasTreeArguments() {
         return Stream.of(
                 Arguments.of(10, Arrays.asList("         *", "        ***", "       *****", "      *******", "     *********", "    ***********", "   *************", "  ***************", " *****************", "*******************", "        ***")),
+                Arguments.of(5, Arrays.asList("    *", "   ***", "  *****", " *******", "*********", "   ***")),
                 Arguments.of(3, Arrays.asList("  *", " ***", "*****", "  *")),
-                Arguments.of(1, Arrays.asList("*", " *")));
+                Arguments.of(2, Arrays.asList(" *", "***", " *")));
     }
 
     @ParameterizedTest
@@ -38,6 +39,8 @@ class ChristmasTreeTest {
 
     private static Stream<Arguments> exceptionsArguments() {
         return Stream.of(
+                Arguments.of(1),
+                Arguments.of(0),
                 Arguments.of(-1),
                 Arguments.of(-3),
                 Arguments.of(-10));

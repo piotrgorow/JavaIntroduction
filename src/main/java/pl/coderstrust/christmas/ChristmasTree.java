@@ -11,7 +11,7 @@ public class ChristmasTree {
 
     public static List<String> getChristmasTree(int size) {
         if (size < 2) {
-            throw new IllegalArgumentException("Size cannot be lower than zero.");
+            throw new IllegalArgumentException("Size cannot be lower than 2.");
         }
         StringBuilder line = new StringBuilder();
         List<String> result = new ArrayList<>();
@@ -36,9 +36,7 @@ public class ChristmasTree {
         }
         if (heightOfTree < 4) {
             return result.append(" *");
-        } else {
-            return result.append("***");
         }
-        return result;
+        return result.append("***");
     }
 }
