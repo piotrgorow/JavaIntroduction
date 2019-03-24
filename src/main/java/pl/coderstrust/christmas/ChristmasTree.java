@@ -37,7 +37,7 @@ public class ChristmasTree {
         if (heightOfTree < 4) {
             return result.append(" *");
         } else {
-            result.append("***");
+            return result.append("***");
         }
         return result;
     }
