@@ -10,7 +10,7 @@ public class MultiplicationTable {
 
     public static int[][] getMultiplicationTable(int size) {
         if (size < 1) {
-            throw new IllegalArgumentException("Size cannot be lower than zero.");
+            throw new IllegalArgumentException("Size cannot be lower than 1.");
         }
         int[][] result = new int[size][size];
         for (int i = 1; i <= size; i++) {

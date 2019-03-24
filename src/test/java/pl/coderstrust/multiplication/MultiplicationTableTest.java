@@ -13,7 +13,7 @@ class MultiplicationTableTest {
 
     @ParameterizedTest
     @MethodSource("multiplicationTableArguments")
-    void shouldReturnCorrectChristmasTree(int number, int[][] expected) {
+    void shouldReturnCorrectMultiplicationTable(int number, int[][] expected) {
         //when
         int[][] result = MultiplicationTable.getMultiplicationTable(number);
 
