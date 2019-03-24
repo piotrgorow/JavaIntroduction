@@ -10,7 +10,7 @@ public class MultiplicationTable {
     }
 
     public static List<String> getMultiplicationTable(int size) {
-        if (size < 0) {
+        if (size < 1) {
             throw new IllegalArgumentException("Size cannot be lower than zero.");
         }
         StringBuilder line = new StringBuilder();
