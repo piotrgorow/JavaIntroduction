@@ -10,8 +10,8 @@ public class PascalTriangle {
     }
 
     public static List<String> getPascalTriangle(int number) {
-        if (number < 0 || number > 20) {
-            throw new IllegalArgumentException("Number cannot be lower than zero or bigger than 20.");
+        if (number < 2 || number > 20) {
+            throw new IllegalArgumentException("Number cannot be lower than 2 or bigger than 20.");
         }
         StringBuilder line = new StringBuilder();
         List<String> result = new ArrayList<>();
@@ -21,10 +21,10 @@ public class PascalTriangle {
             }
             for (int j = 0; j <= i; j++) {
                 long nodeValue = factorial(i) / (factorial(j) * factorial(i - j));
-                line.append(getNumberInField(nodeValue, 8));
+                line.append(String.format("%8d", nodeValue));
             }
             result.add(line.toString());
-            line.delete(0, line.length());
+            line.setLength(0);
         }
         return result;
     }
@@ -34,15 +34,6 @@ public class PascalTriangle {
         for (int i = 1; i <= number; i++) {
             result *= i;
         }
-        return result;
-    }
-
-    private static StringBuilder getNumberInField(long number, int width) {
-        StringBuilder result = new StringBuilder();
-        for (int i = 0; i < width - String.valueOf(number).length(); i++) {
-            result.append(" ");
-        }
-        result.append(number);
         return result;
     }
 }
