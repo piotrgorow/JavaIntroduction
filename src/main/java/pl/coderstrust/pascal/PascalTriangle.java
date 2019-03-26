@@ -17,7 +17,7 @@ public class PascalTriangle {
         List<String> result = new ArrayList<>();
         for (int i = 0; i < number; i++) {
             for (int j = i + 1; j < number; j++) {
-                line.append("    ");
+                line.append(String.format("%4s", " "));
             }
             for (int j = 0; j <= i; j++) {
                 long nodeValue = factorial(i) / (factorial(j) * factorial(i - j));
