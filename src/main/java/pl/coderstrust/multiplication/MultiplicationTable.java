@@ -1,24 +1,23 @@
 package pl.coderstrust.multiplication;
 
+import java.util.Arrays;
+
 public class MultiplicationTable {
 
     public static void main(String[] args) {
-        printMultiplicationTable(12);
+        System.out.println(Arrays.deepToString(getMultiplicationTable(12)));
     }
 
-    public static void printMultiplicationTable(int size) {
-        System.out.printf("%5s", "");
-        for (int i = 1; i <= size; i++) {
-            System.out.printf("%5d", i);
+    public static int[][] getMultiplicationTable(int size) {
+        if (size < 1) {
+            throw new IllegalArgumentException("Size cannot be lower than 1.");
         }
-        System.out.println();
+        int[][] result = new int[size][size];
         for (int i = 1; i <= size; i++) {
-            System.out.printf("%5d", i);
             for (int j = 1; j <= size; j++) {
-                int result = i * j;
-                System.out.printf("%5d", result);
+                result[j - 1][i - 1] = i * j;
             }
-            System.out.println();
         }
+        return result;
     }
 }
