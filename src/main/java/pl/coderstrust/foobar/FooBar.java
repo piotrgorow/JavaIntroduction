@@ -1,21 +1,31 @@
 package pl.coderstrust.foobar;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class FooBar {
 
     public static void main(String[] args) {
-        printFooBar(100);
+        getFooBar(100).forEach(System.out::println);
     }
 
-    public static void printFooBar(int number) {
+    public static List<String> getFooBar(int number) {
+        if (number < 0) {
+            throw new IllegalArgumentException("Number cannot be lower than zero.");
+        }
+        List<String> result = new ArrayList<>();
+        StringBuilder line = new StringBuilder();
         for (int i = 0; i <= number; i++) {
-            System.out.print(i + " ");
+            line.append(i + " ");
             if (i % 3 == 0) {
-                System.out.print("Foo");
+                line.append("Foo");
             }
             if (i % 5 == 0) {
-                System.out.print("Bar");
+                line.append("Bar");
             }
-            System.out.println();
+            result.add(line.toString());
+            line.delete(0, line.length());
         }
+        return result;
     }
 }
