@@ -25,7 +25,13 @@ class PascalTriangleTest {
 
     private static Stream<Arguments> pascalTriangleArguments() {
         return Stream.of(
-                Arguments.of(5, Arrays.asList("                       1", "                   1       1", "               1       2       1",
+                        return Stream.of(
+                Arguments.of(5, Arrays.asList(
+                    "                       1",
+                    "                   1       1", 
+                    "               1       2       1",
+                    "           1       3       3       1",
+                    "       1       4       6       4       1")),
                         "           1       3       3       1", "       1       4       6       4       1")),
                 Arguments.of(4, Arrays.asList("                   1", "               1       1", "           1       2       1", "       1       3       3       1")),
                 Arguments.of(3, Arrays.asList("               1", "           1       1", "       1       2       1")),
