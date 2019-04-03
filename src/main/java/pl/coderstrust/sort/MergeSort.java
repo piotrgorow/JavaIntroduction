@@ -30,7 +30,7 @@ public class MergeSort implements SortingMethod {
                 tmp[i] = result[k++];
                 k++;
             } else {
-                tmp[i] = result[l];
+                tmp[i] = result[l++];
                 l++;
             }
         }
