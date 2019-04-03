@@ -14,7 +14,7 @@ public abstract class SortingTestBase {
 
     @ParameterizedTest
     @MethodSource("parameters")
-    public void shouldSortSimpleArray(int[] given, int[] expected) {
+    public void sortArray(int[] given, int[] expected) {
         // when
         long startTime = System.currentTimeMillis();
         int[] result = getSortingMethod().sort(given);
