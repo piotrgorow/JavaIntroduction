@@ -27,7 +27,7 @@ public class MergeSort implements SortingMethod {
         int k = minArrayIndex, l = indexOfSplit;
         for (int i = minArrayIndex; i < maxArrayIndex; i++) {
             if (k < indexOfSplit && (l >= maxArrayIndex || result[k] <= result[l])) {
-                tmp[i] = result[k];
+                tmp[i] = result[k++];
                 k++;
             } else {
                 tmp[i] = result[l];
