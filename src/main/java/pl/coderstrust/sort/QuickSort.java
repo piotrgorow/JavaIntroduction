@@ -8,7 +8,7 @@ public class QuickSort implements SortingMethod {
         return sort(result, 0, array.length - 1);
     }
 
-    public static int[] sort(int[] result, int minArrayIndex, int maxArrayIndex) {
+    private static int[] sort(int[] result, int minArrayIndex, int maxArrayIndex) {
         if (result == null || result.length == 0 || minArrayIndex < 0 || maxArrayIndex < minArrayIndex - 1) {
             throw new IllegalArgumentException("Table is empty or index out of range.");
         }
