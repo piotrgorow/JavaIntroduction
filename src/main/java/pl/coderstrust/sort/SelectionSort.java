@@ -1,16 +1,12 @@
 package pl.coderstrust.sort;
 
-import java.util.Arrays;
+public class SelectionSort implements SortingMethod {
 
-public class SelectionSort {
-
-    public static void main(String[] args) {
-        int[] array = new int[]{28, 46, 63, 41, 13, 12, 53, 65, 60, 29, 31, 99, 64, 26, 68, 15, 18, 65, 87, 47};
-        System.out.println(Arrays.toString(array));
-        System.out.println(Arrays.toString(sort(array)));
-    }
-
-    public static int[] sort(int[] array) {
+    @Override
+    public int[] sort(int[] array) {
+        if (array == null || array.length == 0) {
+            throw new IllegalArgumentException("Array size cannot be zero.");
+        }
         int[] result = array.clone();
         for (int i = 0; i < result.length - 1; i++) {
             int minimalElementIndex = i;
