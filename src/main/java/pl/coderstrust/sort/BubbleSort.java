@@ -4,9 +4,6 @@ public class BubbleSort implements SortingMethod {
 
     @Override
     public int[] sort(int[] array) {
-        if (array == null || array.length == 0) {
-            throw new IllegalArgumentException("Array cannot be empty.");
-        }
         int[] result = array.clone();
         for (int i = 0; i < result.length; i++) {
             for (int j = 0; j < result.length - i - 1; j++) {

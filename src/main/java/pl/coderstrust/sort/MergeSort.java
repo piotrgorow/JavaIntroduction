@@ -4,9 +4,6 @@ public class MergeSort implements SortingMethod {
 
     @Override
     public int[] sort(int[] array) {
-        if (array == null || array.length == 0) {
-            throw new IllegalArgumentException("Array cannot be empty.");
-        }
         int[] result = array.clone();
         int[] tmp = result.clone();
         topDownSplitMerge(tmp, 0, result.length, result);
@@ -28,10 +25,8 @@ public class MergeSort implements SortingMethod {
         for (int i = minArrayIndex; i < maxArrayIndex; i++) {
             if (k < indexOfSplit && (l >= maxArrayIndex || result[k] <= result[l])) {
                 tmp[i] = result[k++];
-                k++;
             } else {
                 tmp[i] = result[l++];
-                l++;
             }
         }
     }

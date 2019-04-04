@@ -9,40 +9,38 @@ public class QuickSort implements SortingMethod {
     }
 
     private static int[] sort(int[] result, int minArrayIndex, int maxArrayIndex) {
-        if (result == null || result.length == 0 || minArrayIndex < 0 || maxArrayIndex < minArrayIndex - 1) {
-            throw new IllegalArgumentException("Table is empty or index out of range.");
-        }
-        while (minArrayIndex < maxArrayIndex) {
+        if (minArrayIndex < maxArrayIndex) {
             int currentPosition = divideTable(result, minArrayIndex, maxArrayIndex);
-            if ((currentPosition - minArrayIndex) <= (maxArrayIndex - currentPosition)) {
-                sort(result, minArrayIndex, currentPosition - 1);
-                minArrayIndex = currentPosition + 1;
-            } else {
-                sort(result, currentPosition, maxArrayIndex);
-                maxArrayIndex = currentPosition - 1;
-            }
+            sort(result, minArrayIndex, currentPosition);
+            sort(result, currentPosition + 1, maxArrayIndex);
         }
         return result;
     }
 
     private static int divideTable(int[] result, int minArrayIndex, int maxArrayIndex) {
-        int indexOfSplit = minArrayIndex + ((maxArrayIndex - minArrayIndex) / 2);
-        int valueOfSplit = result[indexOfSplit];
-        swapElementsInArray(result, indexOfSplit, maxArrayIndex);
-        int currentPosition = minArrayIndex;
-        for (int i = minArrayIndex; i < maxArrayIndex; i++) {
-            if (result[i] < valueOfSplit) {
-                swapElementsInArray(result, i, currentPosition);
-                currentPosition++;
+        int valueOfSplit = result[minArrayIndex];
+        int i = minArrayIndex - 1;
+        int j = maxArrayIndex + 1;
+        while (true) {
+            do {
+                j--;
+            }
+            while (result[j] > valueOfSplit);
+            do {
+                i++;
+            }
+            while (result[i] < valueOfSplit);
+            if (i < j) {
+                swapElementsInArray(result, i, j);
+            } else {
+                return j;
             }
         }
-        swapElementsInArray(result, currentPosition, maxArrayIndex);
-        return currentPosition;
     }
 
-    private static void swapElementsInArray(int[] array, int indexOfFirstElementToSwap, int indexOfSecondElementToSwap) {
-        int tmp = array[indexOfFirstElementToSwap];
-        array[indexOfFirstElementToSwap] = array[indexOfSecondElementToSwap];
-        array[indexOfSecondElementToSwap] = tmp;
+    private static void swapElementsInArray(int[] result, int indexOfFirstElementToSwap, int indexOfSecondElementToSwap) {
+        int tmp = result[indexOfFirstElementToSwap];
+        result[indexOfFirstElementToSwap] = result[indexOfSecondElementToSwap];
+        result[indexOfSecondElementToSwap] = tmp;
     }
 }

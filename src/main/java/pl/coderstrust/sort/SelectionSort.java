@@ -4,9 +4,6 @@ public class SelectionSort implements SortingMethod {
 
     @Override
     public int[] sort(int[] array) {
-        if (array == null || array.length == 0) {
-            throw new IllegalArgumentException("Array size cannot be zero.");
-        }
         int[] result = array.clone();
         for (int i = 0; i < result.length - 1; i++) {
             int minimalElementIndex = i;
