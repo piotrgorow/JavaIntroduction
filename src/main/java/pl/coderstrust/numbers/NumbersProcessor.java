@@ -18,7 +18,7 @@ public class NumbersProcessor {
             sum += Integer.parseInt(matcher.group());
         }
         if (result.length() > 0) {
-            result.append("=" + sum);
+            result.append("=").append(sum);
         }
         return result.toString();
     }
