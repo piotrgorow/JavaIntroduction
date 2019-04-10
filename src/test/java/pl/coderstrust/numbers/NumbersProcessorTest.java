@@ -8,7 +8,7 @@ import org.junit.jupiter.params.provider.MethodSource;
 import java.util.stream.Stream;
 
 class NumbersProcessorTest {
-    NumbersProcessor numbersProcessor = new NumbersProcessor();
+    private NumbersProcessor numbersProcessor = new NumbersProcessor();
 
     @ParameterizedTest
     @MethodSource("parameters")

@@ -4,9 +4,13 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class NumbersProcessor {
+    private Pattern pattern;
+
+    public NumbersProcessor() {
+        pattern = Pattern.compile("-?[0-9]+");
+    }
 
     public String processLine(String line) {
-        Pattern pattern = Pattern.compile("-?[0-9]+");
         Matcher matcher = pattern.matcher(line);
         StringBuilder result = new StringBuilder();
         int sum = 0;
