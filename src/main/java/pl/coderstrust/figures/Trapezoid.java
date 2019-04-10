@@ -11,7 +11,7 @@ public class Trapezoid implements Figure {
         h = 0.0;
     }
 
-    public Trapezoid(double sideA, double sideB, double h) {
+    public Trapezoid(double base, double leg, double height) {
         setSideA(sideA);
         setSideB(sideB);
         setH(h);
