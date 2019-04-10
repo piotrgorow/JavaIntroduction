@@ -13,16 +13,15 @@ class TrapezoidTest {
 
     @ParameterizedTest
     @MethodSource("parameters")
-    public void shouldCalculateAreaOfTrapezoid(double sideA, double sideB, double h, double expected) {
+    public void shouldCalculateAreaOfTrapezoid(double base, double leg, double height, double expected) {
         //given
-        Trapezoid trapezoid = new Trapezoid(sideA, sideB, h);
+        Trapezoid trapezoid = new Trapezoid(base, leg, height);
 
         //when
         double result = trapezoid.calculateArea();
 
         //then
         assertEquals(expected, result);
-        assertEquals("Trapezoid", trapezoid.toString());
     }
 
     private static Stream<Arguments> parameters() {
@@ -41,9 +40,9 @@ class TrapezoidTest {
         assertThrows(IllegalArgumentException.class, () -> new Trapezoid(argument, 0.0, 0.0));
         assertThrows(IllegalArgumentException.class, () -> new Trapezoid(0.0, argument, 0.0));
         assertThrows(IllegalArgumentException.class, () -> new Trapezoid(0.0, 0.0, argument));
-        assertThrows(IllegalArgumentException.class, () -> trapezoid.setSideA(argument));
-        assertThrows(IllegalArgumentException.class, () -> trapezoid.setSideB(argument));
-        assertThrows(IllegalArgumentException.class, () -> trapezoid.setH(argument));
+        assertThrows(IllegalArgumentException.class, () -> trapezoid.setBase(argument));
+        assertThrows(IllegalArgumentException.class, () -> trapezoid.setLeg(argument));
+        assertThrows(IllegalArgumentException.class, () -> trapezoid.setHeight(argument));
     }
 
     private static Stream<Arguments> exceptionsArguments() {

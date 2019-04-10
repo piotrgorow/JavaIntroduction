@@ -13,16 +13,15 @@ class SquareTest {
 
     @ParameterizedTest
     @MethodSource("parameters")
-    public void shouldCalculateAreaOfSquare(double sideA, double expected) {
+    public void shouldCalculateAreaOfSquare(double side, double expected) {
         //given
-        Square square = new Square(sideA);
+        Square square = new Square(side);
 
         //when
         double result = square.calculateArea();
 
         //then
         assertEquals(expected, result);
-        assertEquals("Square", square.toString());
     }
 
     private static Stream<Arguments> parameters() {
@@ -39,7 +38,7 @@ class SquareTest {
     void shouldThrowExceptionForInvalidArguments(double argument) {
         Square square = new Square();
         assertThrows(IllegalArgumentException.class, () -> new Square(argument));
-        assertThrows(IllegalArgumentException.class, () -> square.setSideA(argument));
+        assertThrows(IllegalArgumentException.class, () -> square.setSide(argument));
     }
 
     private static Stream<Arguments> exceptionsArguments() {

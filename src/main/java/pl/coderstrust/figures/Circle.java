@@ -8,7 +8,10 @@ public class Circle implements Figure {
     }
 
     public Circle(double radius) {
-        setRadius(radius);
+        if (radius < 0.0) {
+            throw new IllegalArgumentException("Parameter 'radius' cannot be less then zero.");
+        }
+        this.radius = radius;
     }
 
     @Override
@@ -21,10 +24,5 @@ public class Circle implements Figure {
             throw new IllegalArgumentException("Parameter 'radius' cannot be less then zero.");
         }
         this.radius = radius;
-    }
-
-    @Override
-    public String toString() {
-        return "Circle";
     }
 }

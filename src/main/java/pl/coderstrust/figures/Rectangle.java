@@ -10,8 +10,11 @@ public class Rectangle implements Figure {
     }
 
     public Rectangle(double sideA, double sideB) {
-        setSideA(sideA);
-        setSideB(sideB);
+        if (sideA < 0.0 || sideB < 0.0) {
+            throw new IllegalArgumentException("Parameters sideA or sideB cannot be less then zero.");
+        }
+        this.sideA = sideA;
+        this.sideB = sideB;
     }
 
     @Override
@@ -21,24 +24,15 @@ public class Rectangle implements Figure {
 
     public void setSideA(double sideA) {
         if (sideA < 0.0) {
-            throwException("a");
+            throw new IllegalArgumentException("Parameter sideA cannot be less then zero.");
         }
         this.sideA = sideA;
     }
 
     public void setSideB(double sideB) {
         if (sideB < 0.0) {
-            throwException("b");
+            throw new IllegalArgumentException("Parameter sideB cannot be less then zero.");
         }
         this.sideB = sideB;
-    }
-
-    private void throwException(String argument) {
-        throw new IllegalArgumentException("Parameter '" + argument + "' cannot be less then zero.");
-    }
-
-    @Override
-    public String toString() {
-        return "Rectangle";
     }
 }

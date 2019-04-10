@@ -1,54 +1,48 @@
 package pl.coderstrust.figures;
 
 public class Trapezoid implements Figure {
-    private double sideA;
-    private double sideB;
-    private double h;
+    private double base;
+    private double leg;
+    private double height;
 
     public Trapezoid() {
-        sideA = 0.0;
-        sideB = 0.0;
-        h = 0.0;
+        base = 0.0;
+        leg = 0.0;
+        height = 0.0;
     }
 
     public Trapezoid(double base, double leg, double height) {
-        setSideA(sideA);
-        setSideB(sideB);
-        setH(h);
+        if (base < 0.0 || leg < 0.0 || height < 0.0) {
+            throw new IllegalArgumentException("Parameters base, leg or height cannot be less then zero.");
+        }
+        this.base = base;
+        this.leg = leg;
+        this.height = height;
     }
 
     @Override
     public double calculateArea() {
-        return ((sideA + sideB) * h) / 2.0;
+        return ((base + leg) * height) / 2.0;
     }
 
-    public void setSideA(double sideA) {
-        if (sideA < 0.0) {
-            throwException("a");
+    public void setBase(double base) {
+        if (base < 0.0) {
+            throw new IllegalArgumentException("Parameter base cannot be less then zero.");
         }
-        this.sideA = sideA;
+        this.base = base;
     }
 
-    public void setSideB(double sideB) {
-        if (sideB < 0.0) {
-            throwException("b");
+    public void setLeg(double leg) {
+        if (leg < 0.0) {
+            throw new IllegalArgumentException("Parameter leg cannot be less then zero.");
         }
-        this.sideB = sideB;
+        this.leg = leg;
     }
 
-    public void setH(double h) {
-        if (h < 0.0) {
-            throwException("h");
+    public void setHeight(double height) {
+        if (height < 0.0) {
+            throw new IllegalArgumentException("Parameter height cannot be less then zero.");
         }
-        this.h = h;
-    }
-
-    private void throwException(String argument) {
-        throw new IllegalArgumentException("Parameter '" + argument + "' cannot be less then zero.");
-    }
-
-    @Override
-    public String toString() {
-        return "Trapezoid";
+        this.height = height;
     }
 }

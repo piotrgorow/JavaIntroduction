@@ -22,7 +22,6 @@ class CircleTest {
 
         //then
         assertEquals(expected, result);
-        assertEquals("Circle", circle.toString());
     }
 
     private static Stream<Arguments> parameters() {

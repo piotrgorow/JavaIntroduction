@@ -9,16 +9,16 @@ import java.util.stream.Stream;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
-class RectangleTest {
+class TriangleTest {
 
     @ParameterizedTest
     @MethodSource("parameters")
-    public void shouldCalculateAreaOfRectangle(double sideA, double sideB, double expected) {
+    public void shouldCalculateAreaOfTriangle(double base, double height, double expected) {
         //given
-        Rectangle rectangle = new Rectangle(sideA, sideB);
+        Triangle triangle = new Triangle(base, height);
 
         //when
-        double result = rectangle.calculateArea();
+        double result = triangle.calculateArea();
 
         //then
         assertEquals(expected, result);
@@ -26,21 +26,21 @@ class RectangleTest {
 
     private static Stream<Arguments> parameters() {
         return Stream.of(
+                Arguments.of(5.0, 5.0, 12.5),
                 Arguments.of(0.0, 5.0, 0.0),
-                Arguments.of(1.0, 5.0, 5.0),
-                Arguments.of(5.0, 10.0, 50.0),
-                Arguments.of(25.0, 50.0, 1250.0)
+                Arguments.of(5.0, 0.0, 0.0),
+                Arguments.of(5.0, 10.0, 25.0)
         );
     }
 
     @ParameterizedTest
     @MethodSource("exceptionsArguments")
     void shouldThrowExceptionForInvalidArguments(double argument) {
-        Rectangle rectangle = new Rectangle();
-        assertThrows(IllegalArgumentException.class, () -> new Rectangle(argument, 0.0));
-        assertThrows(IllegalArgumentException.class, () -> new Rectangle(0.0, argument));
-        assertThrows(IllegalArgumentException.class, () -> rectangle.setSideA(argument));
-        assertThrows(IllegalArgumentException.class, () -> rectangle.setSideB(argument));
+        Triangle triangle = new Triangle();
+        assertThrows(IllegalArgumentException.class, () -> new Triangle(argument, 0.0));
+        assertThrows(IllegalArgumentException.class, () -> new Triangle(0.0, argument));
+        assertThrows(IllegalArgumentException.class, () -> triangle.setBase(argument));
+        assertThrows(IllegalArgumentException.class, () -> triangle.setHeight(argument));
     }
 
     private static Stream<Arguments> exceptionsArguments() {
