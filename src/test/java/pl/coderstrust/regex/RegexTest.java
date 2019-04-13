@@ -1,4 +1,4 @@
-package pl.coderstrust.regex;
+package pl.coderstrust.ipadress;
 
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
