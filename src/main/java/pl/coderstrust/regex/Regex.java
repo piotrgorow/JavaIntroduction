@@ -3,7 +3,7 @@ package pl.coderstrust.ipadress
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class Regex {
+public class IpAddressValidator {
     private Pattern pattern;
 
     public Regex() {
