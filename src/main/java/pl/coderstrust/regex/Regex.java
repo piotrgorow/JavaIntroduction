@@ -1,4 +1,4 @@
-package pl.coderstrust.regex;
+package pl.coderstrust.ipadress
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
