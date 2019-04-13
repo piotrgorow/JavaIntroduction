@@ -12,8 +12,8 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 class TrapezoidTest {
 
     @ParameterizedTest
-    @MethodSource("parameters")
-    public void shouldCalculateAreaOfTrapezoid(double base, double leg, double height, double expected) {
+    @MethodSource("calculateAreaArguments")
+    public void shouldCalculateArea(double base, double leg, double height, double expected) {
         //given
         Trapezoid trapezoid = new Trapezoid(base, leg, height);
 
@@ -24,7 +24,7 @@ class TrapezoidTest {
         assertEquals(expected, result);
     }
 
-    private static Stream<Arguments> parameters() {
+    private static Stream<Arguments> calculateAreaArguments() {
         return Stream.of(
                 Arguments.of(5.0, 5.0, 5.0, 25.0),
                 Arguments.of(0.0, 5.0, 5.0, 12.5),
@@ -35,13 +35,40 @@ class TrapezoidTest {
 
     @ParameterizedTest
     @MethodSource("exceptionsArguments")
-    void shouldThrowExceptionForInvalidArguments(double argument) {
-        Trapezoid trapezoid = new Trapezoid();
+    void shouldThrowExceptionForInvalidBaseConstructorArguments(double argument) {
         assertThrows(IllegalArgumentException.class, () -> new Trapezoid(argument, 0.0, 0.0));
+    }
+
+    @ParameterizedTest
+    @MethodSource("exceptionsArguments")
+    void shouldThrowExceptionForInvalidLegConstructorArguments(double argument) {
         assertThrows(IllegalArgumentException.class, () -> new Trapezoid(0.0, argument, 0.0));
+    }
+
+    @ParameterizedTest
+    @MethodSource("exceptionsArguments")
+    void shouldThrowExceptionForInvalidHeightConstructorArguments(double argument) {
         assertThrows(IllegalArgumentException.class, () -> new Trapezoid(0.0, 0.0, argument));
+    }
+
+    @ParameterizedTest
+    @MethodSource("exceptionsArguments")
+    void shouldThrowExceptionForInvalidBaseSetterArguments(double argument) {
+        Trapezoid trapezoid = new Trapezoid();
         assertThrows(IllegalArgumentException.class, () -> trapezoid.setBase(argument));
+    }
+
+    @ParameterizedTest
+    @MethodSource("exceptionsArguments")
+    void shouldThrowExceptionForInvalidLegSetterArguments(double argument) {
+        Trapezoid trapezoid = new Trapezoid();
         assertThrows(IllegalArgumentException.class, () -> trapezoid.setLeg(argument));
+    }
+
+    @ParameterizedTest
+    @MethodSource("exceptionsArguments")
+    void shouldThrowExceptionForInvalidHeightSetterArguments(double argument) {
+        Trapezoid trapezoid = new Trapezoid();
         assertThrows(IllegalArgumentException.class, () -> trapezoid.setHeight(argument));
     }
 

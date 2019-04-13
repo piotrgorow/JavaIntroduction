@@ -10,29 +10,32 @@ public class Triangle implements Figure {
     }
 
     public Triangle(double base, double height) {
-        if (base < 0.0 || height < 0.0) {
-            throw new IllegalArgumentException("Parameters base or height cannot be less then zero.");
+        if (base < 0.0) {
+            throw new IllegalArgumentException("Parameter base cannot be less then zero.");
+        }
+        if (height < 0.0) {
+            throw new IllegalArgumentException("Parameter height cannot be less then zero.");
         }
         this.base = base;
         this.height = height;
     }
 
-    @Override
-    public double calculateArea() {
-        return (base * height) / 2.0;
-    }
-
     public void setBase(double base) {
-        if (base < 0.0 || height < 0.0) {
+        if (base < 0.0) {
             throw new IllegalArgumentException("Parameter base cannot be less then zero.");
         }
         this.base = base;
     }
 
     public void setHeight(double height) {
-        if (base < 0.0 || height < 0.0) {
+        if (height < 0.0) {
             throw new IllegalArgumentException("Parameter height cannot be less then zero.");
         }
         this.height = height;
+    }
+
+    @Override
+    public double calculateArea() {
+        return (base * height) / 2.0;
     }
 }

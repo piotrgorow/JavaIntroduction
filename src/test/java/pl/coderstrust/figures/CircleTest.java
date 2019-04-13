@@ -12,7 +12,7 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 class CircleTest {
 
     @ParameterizedTest
-    @MethodSource("parameters")
+    @MethodSource("calculateAreaArguments")
     public void shouldCalculateArea(double radius, double expected) {
         //given
         Circle circle = new Circle(radius);
@@ -35,9 +35,14 @@ class CircleTest {
 
     @ParameterizedTest
     @MethodSource("exceptionsArguments")
-    void shouldThrowExceptionForInvalidArguments(double argument) {
-        Circle circle = new Circle();
+    void shouldThrowExceptionForInvalidRadiusConstructorArguments(double argument) {
         assertThrows(IllegalArgumentException.class, () -> new Circle(argument));
+    }
+
+    @ParameterizedTest
+    @MethodSource("exceptionsArguments")
+    void shouldThrowExceptionForInvalidRadiusSetterArguments(double argument) {
+        Circle circle = new Circle();
         assertThrows(IllegalArgumentException.class, () -> circle.setRadius(argument));
     }
 

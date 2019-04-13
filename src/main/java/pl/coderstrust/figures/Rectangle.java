@@ -10,16 +10,14 @@ public class Rectangle implements Figure {
     }
 
     public Rectangle(double sideA, double sideB) {
-        if (sideA < 0.0 || sideB < 0.0) {
-            throw new IllegalArgumentException("Parameters sideA or sideB cannot be less then zero.");
+        if (sideA < 0.0) {
+            throw new IllegalArgumentException("Parameter sideA cannot be less then zero.");
+        }
+        if (sideB < 0.0) {
+            throw new IllegalArgumentException("Parameter sideB cannot be less then zero.");
         }
         this.sideA = sideA;
         this.sideB = sideB;
-    }
-
-    @Override
-    public double calculateArea() {
-        return sideA * sideB;
     }
 
     public void setSideA(double sideA) {
@@ -34,5 +32,10 @@ public class Rectangle implements Figure {
             throw new IllegalArgumentException("Parameter sideB cannot be less then zero.");
         }
         this.sideB = sideB;
+    }
+
+    @Override
+    public double calculateArea() {
+        return sideA * sideB;
     }
 }

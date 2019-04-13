@@ -12,8 +12,8 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 class TriangleTest {
 
     @ParameterizedTest
-    @MethodSource("parameters")
-    public void shouldCalculateAreaOfTriangle(double base, double height, double expected) {
+    @MethodSource("calculateAreaArguments")
+    public void shouldCalculateArea(double base, double height, double expected) {
         //given
         Triangle triangle = new Triangle(base, height);
 
@@ -24,7 +24,7 @@ class TriangleTest {
         assertEquals(expected, result);
     }
 
-    private static Stream<Arguments> parameters() {
+    private static Stream<Arguments> calculateAreaArguments() {
         return Stream.of(
                 Arguments.of(5.0, 5.0, 12.5),
                 Arguments.of(0.0, 5.0, 0.0),
@@ -35,11 +35,27 @@ class TriangleTest {
 
     @ParameterizedTest
     @MethodSource("exceptionsArguments")
-    void shouldThrowExceptionForInvalidArguments(double argument) {
-        Triangle triangle = new Triangle();
+    void shouldThrowExceptionForInvalidBaseConstructorArguments(double argument) {
         assertThrows(IllegalArgumentException.class, () -> new Triangle(argument, 0.0));
+    }
+
+    @ParameterizedTest
+    @MethodSource("exceptionsArguments")
+    void shouldThrowExceptionForInvalidHeightConstructorArguments(double argument) {
         assertThrows(IllegalArgumentException.class, () -> new Triangle(0.0, argument));
+    }
+
+    @ParameterizedTest
+    @MethodSource("exceptionsArguments")
+    void shouldThrowExceptionForInvalidBaseSetterArguments(double argument) {
+        Triangle triangle = new Triangle();
         assertThrows(IllegalArgumentException.class, () -> triangle.setBase(argument));
+    }
+
+    @ParameterizedTest
+    @MethodSource("exceptionsArguments")
+    void shouldThrowExceptionForInvalidHeightSetterArguments(double argument) {
+        Triangle triangle = new Triangle();
         assertThrows(IllegalArgumentException.class, () -> triangle.setHeight(argument));
     }
 

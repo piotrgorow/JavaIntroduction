@@ -14,15 +14,15 @@ public class Circle implements Figure {
         this.radius = radius;
     }
 
-    @Override
-    public double calculateArea() {
-        return Math.PI * radius * radius;
-    }
-
     public void setRadius(double radius) {
         if (radius < 0.0) {
             throw new IllegalArgumentException("Parameter 'radius' cannot be less then zero.");
         }
         this.radius = radius;
+    }
+
+    @Override
+    public double calculateArea() {
+        return Math.PI * radius * radius;
     }
 }

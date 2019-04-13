@@ -12,8 +12,8 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 class RectangleTest {
 
     @ParameterizedTest
-    @MethodSource("parameters")
-    public void shouldCalculateAreaOfRectangle(double sideA, double sideB, double expected) {
+    @MethodSource("calculateAreaArguments")
+    public void shouldCalculateArea(double sideA, double sideB, double expected) {
         //given
         Rectangle rectangle = new Rectangle(sideA, sideB);
 
@@ -24,7 +24,7 @@ class RectangleTest {
         assertEquals(expected, result);
     }
 
-    private static Stream<Arguments> parameters() {
+    private static Stream<Arguments> calculateAreaArguments() {
         return Stream.of(
                 Arguments.of(0.0, 5.0, 0.0),
                 Arguments.of(1.0, 5.0, 5.0),
@@ -35,11 +35,27 @@ class RectangleTest {
 
     @ParameterizedTest
     @MethodSource("exceptionsArguments")
-    void shouldThrowExceptionForInvalidArguments(double argument) {
-        Rectangle rectangle = new Rectangle();
+    void shouldThrowExceptionForInvalidSideAConstructorArguments(double argument) {
         assertThrows(IllegalArgumentException.class, () -> new Rectangle(argument, 0.0));
+    }
+
+    @ParameterizedTest
+    @MethodSource("exceptionsArguments")
+    void shouldThrowExceptionForInvalidSideBConstructorArguments(double argument) {
         assertThrows(IllegalArgumentException.class, () -> new Rectangle(0.0, argument));
+    }
+
+    @ParameterizedTest
+    @MethodSource("exceptionsArguments")
+    void shouldThrowExceptionForInvalidSideASetterArguments(double argument) {
+        Rectangle rectangle = new Rectangle();
         assertThrows(IllegalArgumentException.class, () -> rectangle.setSideA(argument));
+    }
+
+    @ParameterizedTest
+    @MethodSource("exceptionsArguments")
+    void shouldThrowExceptionForInvalidSideBSetterArguments(double argument) {
+        Rectangle rectangle = new Rectangle();
         assertThrows(IllegalArgumentException.class, () -> rectangle.setSideB(argument));
     }
 

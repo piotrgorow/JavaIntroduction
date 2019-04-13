@@ -12,8 +12,8 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 class SquareTest {
 
     @ParameterizedTest
-    @MethodSource("parameters")
-    public void shouldCalculateAreaOfSquare(double side, double expected) {
+    @MethodSource("calculateAreaArguments")
+    public void shouldCalculateArea(double side, double expected) {
         //given
         Square square = new Square(side);
 
@@ -24,7 +24,7 @@ class SquareTest {
         assertEquals(expected, result);
     }
 
-    private static Stream<Arguments> parameters() {
+    private static Stream<Arguments> calculateAreaArguments() {
         return Stream.of(
                 Arguments.of(0.0, 0.0),
                 Arguments.of(1.0, 1.0),
@@ -35,9 +35,14 @@ class SquareTest {
 
     @ParameterizedTest
     @MethodSource("exceptionsArguments")
-    void shouldThrowExceptionForInvalidArguments(double argument) {
-        Square square = new Square();
+    void shouldThrowExceptionForInvalidSideConstructorArguments(double argument) {
         assertThrows(IllegalArgumentException.class, () -> new Square(argument));
+    }
+
+    @ParameterizedTest
+    @MethodSource("exceptionsArguments")
+    void shouldThrowExceptionForInvalidSideSetterArguments(double argument) {
+        Square square = new Square();
         assertThrows(IllegalArgumentException.class, () -> square.setSide(argument));
     }
 
