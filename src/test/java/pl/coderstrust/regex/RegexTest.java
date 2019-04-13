@@ -48,7 +48,7 @@ class RegexTest {
     @Test
     @Disabled
     public void shouldTestEveryValue() {
-        Regex regex = new Regex();
+        String ipAddress;
         for (int i = 0; i < 256; i++) {
             System.out.print(i + " ");
             for (int j = 0; j < 256; j++) {
