@@ -47,7 +47,7 @@ class IpAddressValidatorTest {
 
     @Test
     @Disabled
-    public void shouldTestEveryValue() {
+    public void shouldReturnTrueForAllCombinationsOfIpAddress() {
         String ipAddress;
         for (int i = 0; i < 256; i++) {
             System.out.print(i + " ");
