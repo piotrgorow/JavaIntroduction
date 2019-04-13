@@ -24,7 +24,7 @@ class CircleTest {
         assertEquals(expected, result);
     }
 
-    private static Stream<Arguments> parameters() {
+    private static Stream<Arguments> calculateAreaArguments() {
         return Stream.of(
                 Arguments.of(0.0, 0.0),
                 Arguments.of(1.0, 3.141592653589793),
