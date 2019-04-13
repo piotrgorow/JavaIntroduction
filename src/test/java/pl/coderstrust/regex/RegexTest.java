@@ -57,7 +57,8 @@ class RegexTest {
                 }
                 for (int k = 0; k < 256; k++) {
                     for (int l = 0; l < 256; l++) {
-                        if (!regex.isIpAddress(i + "." + j + "." + k + "." + l)) {
+                        ipAddress = String.format("%d.%d.%d.%d", i, j, k, l);
+                        Assert.assertTrue(IpAddressValidator.isIpAddress(ipAddress));
                             System.out.println();
                             System.out.println("Error on address: " + i + "." + j + "." + k + "." + l);
                         }
