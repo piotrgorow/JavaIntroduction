@@ -1,5 +1,6 @@
 package pl.coderstrust.ipadress;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -7,8 +8,6 @@ import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 
 import java.util.stream.Stream;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 class IpAddressValidatorTest {
 
@@ -19,7 +18,7 @@ class IpAddressValidatorTest {
         boolean result = IpAddressValidator.isIpAddress(given);
 
         //then
-        assertEquals(expected, result);
+        Assertions.assertEquals(expected, result);
     }
 
     private static Stream<Arguments> invalidTestArguments() {
@@ -42,7 +41,7 @@ class IpAddressValidatorTest {
         boolean result = IpAddressValidator.isIpAddress(given);
 
         //then
-        assertEquals(expected, result);
+        Assertions.assertEquals(expected, result);
     }
 
     private static Stream<Arguments> validTestArguments() {
@@ -59,7 +58,7 @@ class IpAddressValidatorTest {
 
     @Test
     public void shouldThrowExceptionForNullArgument() {
-        assertThrows(IllegalArgumentException.class, () -> IpAddressValidator.isIpAddress(null));
+        Assertions.assertThrows(IllegalArgumentException.class, () -> IpAddressValidator.isIpAddress(null));
     }
 
     @Test
@@ -71,7 +70,7 @@ class IpAddressValidatorTest {
                 for (int k = 0; k < 256; k++) {
                     for (int l = 0; l < 256; l++) {
                         ipAddress = String.format("%d.%d.%d.%d", i, j, k, l);
-                        assertTrue(IpAddressValidator.isIpAddress(ipAddress));
+                        Assertions.assertTrue(IpAddressValidator.isIpAddress(ipAddress));
                     }
                 }
             }
