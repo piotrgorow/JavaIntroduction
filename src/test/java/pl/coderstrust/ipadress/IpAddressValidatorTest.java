@@ -63,7 +63,7 @@ class IpAddressValidatorTest {
 
     @Test
     @Disabled
-    public void shouldReturnTrueForAllCombinationsOfIpAddress() {
+    void shouldReturnTrueForAllCombinationsOfIpAddress() {
         String ipAddress;
         for (int i = 0; i < 256; i++) {
             for (int j = 0; j < 256; j++) {
