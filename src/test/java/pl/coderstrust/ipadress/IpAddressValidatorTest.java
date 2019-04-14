@@ -23,7 +23,7 @@ class IpAddressValidatorTest {
 
     private static Stream<Arguments> invalidTestArguments() {
         return Stream.of(
-                Arguments.of("192.168.0", false),
+                Arguments.of("192.168.0"),
                 Arguments.of("192.168.0.256", false),
                 Arguments.of("192.168.256.1", false),
                 Arguments.of("192.256.0.1", false),
