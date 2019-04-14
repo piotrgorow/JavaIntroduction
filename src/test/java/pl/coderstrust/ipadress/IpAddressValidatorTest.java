@@ -44,7 +44,7 @@ class IpAddressValidatorTest {
         assertTrue(result);
     }
 
-    private static Stream<Arguments> validTestArguments() {
+    private static Stream<Arguments> validIpAddresses() {
         return Stream.of(
                 Arguments.of("192.168.0.1", true),
                 Arguments.of("192.168.000.000", true),
