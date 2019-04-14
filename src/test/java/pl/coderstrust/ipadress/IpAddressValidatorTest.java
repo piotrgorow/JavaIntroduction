@@ -57,7 +57,7 @@ class IpAddressValidatorTest {
     }
 
     @Test
-    public void shouldThrowExceptionForNullArgument() {
+    void shouldThrowExceptionForInvalidArgument() {
         Assertions.assertThrows(IllegalArgumentException.class, () -> IpAddressValidator.isIpAddress(null));
     }
 
