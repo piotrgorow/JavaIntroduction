@@ -18,7 +18,7 @@ class IpAddressValidatorTest {
         boolean result = IpAddressValidator.isIpAddress(given);
 
         //then
-        Assertions.assertEquals(expected, result);
+        assertFalse(result);
     }
 
     private static Stream<Arguments> invalidTestArguments() {
