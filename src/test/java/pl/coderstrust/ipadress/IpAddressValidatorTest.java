@@ -21,7 +21,7 @@ class IpAddressValidatorTest {
         assertFalse(result);
     }
 
-    private static Stream<Arguments> invalidTestArguments() {
+    private static Stream<Arguments> invalidIpAddresses() {
         return Stream.of(
                 Arguments.of("192.168.0"),
                 Arguments.of("192.168.0.256", false),
