@@ -41,7 +41,7 @@ class CircleTest {
 
     @ParameterizedTest
     @MethodSource("exceptionsArguments")
-    void shouldThrowExceptionForInvalidRadiusSetterArguments(double argument) {
+    void shouldThrowExceptionForInvalidRadiusPassedToSetter(double radius) {
         Circle circle = new Circle();
         assertThrows(IllegalArgumentException.class, () -> circle.setRadius(argument));
     }
