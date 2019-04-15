@@ -13,42 +13,43 @@ import java.util.List;
 
 public class FileProcessor {
 
-    public void writeLinesToFile(List<String> resultLines, String resultFileName) {
+    public void writeLinesToFile(List<String> resultLines, String resultFileName) throws IOException {
         ClassLoader classLoader = getClass().getClassLoader();
         File file = new File(classLoader.getResource(resultFileName).getFile());
-        try (FileOutputStream fileOutputStream = new FileOutputStream(file)) {
-            OutputStreamWriter outputStreamWriter = new OutputStreamWriter(fileOutputStream);
-            BufferedWriter bufferedWriter = new BufferedWriter(outputStreamWriter);
-            for (String line : resultLines) {
-                if (!line.trim().equals("")) {
-                    bufferedWriter.write(line);
-                    bufferedWriter.newLine();
-                }
+        FileOutputStream fileOutputStream = new FileOutputStream(file);
+        OutputStreamWriter outputStreamWriter = new OutputStreamWriter(fileOutputStream);
+        BufferedWriter bufferedWriter = new BufferedWriter(outputStreamWriter);
+        for (String line : resultLines) {
+            if (!line.trim().equals("")) {
+                bufferedWriter.write(line);
+                bufferedWriter.newLine();
             }
-            bufferedWriter.close();
-        } catch (IOException e) {
-            e.printStackTrace();
         }
+        bufferedWriter.close();
     }
 
-    public List<String> readLinesFromFile(String fileName) {
+    public List<String> readLinesFromFile(String fileName) throws IOException {
         ClassLoader classLoader = getClass().getClassLoader();
         File file = new File(classLoader.getResource(fileName).getFile());
         List<String> result = new ArrayList<>();
-        try (FileInputStream fileInputStream = new FileInputStream(file)) {
-            InputStreamReader inputStreamReader = new InputStreamReader(fileInputStream);
-            BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
-            String line = bufferedReader.readLine();
-            while (line != null) {
-                if (!line.trim().equals("")) {
-                    result.add(line);
-                }
-                line = bufferedReader.readLine();
+        FileInputStream fileInputStream = new FileInputStream(file);
+        InputStreamReader inputStreamReader = new InputStreamReader(fileInputStream);
+        BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
+        String line = bufferedReader.readLine();
+        while (line != null) {
+            if (!line.trim().equals("")) {
+                result.add(line);
             }
-            bufferedReader.close();
-        } catch (IOException e) {
-            e.printStackTrace();
+            line = bufferedReader.readLine();
         }
+        bufferedReader.close();
+
         return result;
+    }
+
+    public void deleteFile(String fileName) throws IOException {
+        ClassLoader classLoader = getClass().getClassLoader();
+        File file = new File(classLoader.getResource(fileName).getFile());
+        file.delete();
     }
 }

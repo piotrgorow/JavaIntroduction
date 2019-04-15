@@ -1,7 +1,9 @@
 package pl.coderstrust.numbers;
 
+import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.Test;
 
+import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
 
@@ -14,7 +16,12 @@ class FileProcessorTest {
     @Test
     public void shouldProperReadFromFile() {
         //when
-        List<String> result = fileProcessor.readLinesFromFile("readTest.txt");
+        List<String> result = null;
+        try {
+            result = fileProcessor.readLinesFromFile("readTest.txt");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
         //then
         assertArrayEquals(expected.toArray(), result.toArray());
@@ -23,10 +30,29 @@ class FileProcessorTest {
     @Test
     public void shouldProperWriteToFile() {
         //when
-        fileProcessor.writeLinesToFile(expected, "writeTest.txt");
-        List<String> result = fileProcessor.readLinesFromFile("writeTest.txt");
+        try {
+            fileProcessor.writeLinesToFile(expected, "writeTest.txt");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        List<String> result = null;
+        try {
+            result = fileProcessor.readLinesFromFile("writeTest.txt");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
         //then
         assertArrayEquals(expected.toArray(), result.toArray());
+    }
+
+    @AfterAll
+    private static void removeTestFile() {
+        FileProcessor fileProcessor = new FileProcessor();
+        try {
+            fileProcessor.deleteFile("writeTest.txt");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }

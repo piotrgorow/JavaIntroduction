@@ -1,5 +1,7 @@
 package pl.coderstrust.numbers;
 
+import java.io.IOException;
+
 public class Main {
 
     public static void main(String[] args) {
@@ -9,6 +11,10 @@ public class Main {
         NumbersProcessor numbersProcessor = new NumbersProcessor();
         Processor processor = new Processor(numbersProcessor, fileProcessor);
         processor.process(fileName, resultFileName);
-        fileProcessor.readLinesFromFile(resultFileName).forEach(System.out::println);
+        try {
+            fileProcessor.readLinesFromFile(resultFileName).forEach(System.out::println);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }
