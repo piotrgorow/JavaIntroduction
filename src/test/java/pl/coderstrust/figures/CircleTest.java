@@ -46,7 +46,7 @@ class CircleTest {
         assertThrows(IllegalArgumentException.class, () -> circle.setRadius(argument));
     }
 
-    private static Stream<Arguments> exceptionsArguments() {
+    private static Stream<Arguments> invalidRadiusArguments() {
         return Stream.of(
                 Arguments.of(-1.0),
                 Arguments.of(-10.0),
