@@ -13,9 +13,24 @@ class RectangleTest {
 
     @ParameterizedTest
     @MethodSource("calculateAreaArguments")
-    public void shouldCalculateArea(double sideA, double sideB, double expected) {
+    public void shouldCalculateAreaBasedOnConstructor(double sideA, double sideB, double expected) {
         //given
         Rectangle rectangle = new Rectangle(sideA, sideB);
+
+        //when
+        double result = rectangle.calculateArea();
+
+        //then
+        assertEquals(expected, result);
+    }
+
+    @ParameterizedTest
+    @MethodSource("calculateAreaArguments")
+    public void shouldCalculateAreaBasedOnSetters(double sideA, double sideB, double expected) {
+        //given
+        Rectangle rectangle = new Rectangle();
+        rectangle.setSideA(sideA);
+        rectangle.setSideB(sideB);
 
         //when
         double result = rectangle.calculateArea();
@@ -34,32 +49,32 @@ class RectangleTest {
     }
 
     @ParameterizedTest
-    @MethodSource("exceptionsArguments")
-    void shouldThrowExceptionForInvalidSideAConstructorArguments(double argument) {
-        assertThrows(IllegalArgumentException.class, () -> new Rectangle(argument, 0.0));
+    @MethodSource("invalidSideArguments")
+    void shouldThrowExceptionForInvalidSideAPassedToConstructor(double sideA) {
+        assertThrows(IllegalArgumentException.class, () -> new Rectangle(sideA, 0.0));
     }
 
     @ParameterizedTest
-    @MethodSource("exceptionsArguments")
-    void shouldThrowExceptionForInvalidSideBConstructorArguments(double argument) {
-        assertThrows(IllegalArgumentException.class, () -> new Rectangle(0.0, argument));
+    @MethodSource("invalidSideArguments")
+    void shouldThrowExceptionForInvalidSideBPassedToConstructor(double sideB) {
+        assertThrows(IllegalArgumentException.class, () -> new Rectangle(0.0, sideB));
     }
 
     @ParameterizedTest
-    @MethodSource("exceptionsArguments")
-    void shouldThrowExceptionForInvalidSideASetterArguments(double argument) {
+    @MethodSource("invalidSideArguments")
+    void shouldThrowExceptionForInvalidSideAPassedToSetter(double sideA) {
         Rectangle rectangle = new Rectangle();
-        assertThrows(IllegalArgumentException.class, () -> rectangle.setSideA(argument));
+        assertThrows(IllegalArgumentException.class, () -> rectangle.setSideA(sideA));
     }
 
     @ParameterizedTest
-    @MethodSource("exceptionsArguments")
-    void shouldThrowExceptionForInvalidSideBSetterArguments(double argument) {
+    @MethodSource("invalidSideArguments")
+    void shouldThrowExceptionForInvalidSideBPassedToSetter(double sideB) {
         Rectangle rectangle = new Rectangle();
-        assertThrows(IllegalArgumentException.class, () -> rectangle.setSideB(argument));
+        assertThrows(IllegalArgumentException.class, () -> rectangle.setSideB(sideB));
     }
 
-    private static Stream<Arguments> exceptionsArguments() {
+    private static Stream<Arguments> invalidSideArguments() {
         return Stream.of(
                 Arguments.of(-1.0),
                 Arguments.of(-10.0),

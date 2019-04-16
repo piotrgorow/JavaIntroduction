@@ -13,9 +13,23 @@ class SquareTest {
 
     @ParameterizedTest
     @MethodSource("calculateAreaArguments")
-    public void shouldCalculateArea(double side, double expected) {
+    public void shouldCalculateAreaBasedOnConstructor(double side, double expected) {
         //given
         Square square = new Square(side);
+
+        //when
+        double result = square.calculateArea();
+
+        //then
+        assertEquals(expected, result);
+    }
+
+    @ParameterizedTest
+    @MethodSource("calculateAreaArguments")
+    public void shouldCalculateAreaBasedOnSetter(double side, double expected) {
+        //given
+        Square square = new Square();
+        square.setSide(side);
 
         //when
         double result = square.calculateArea();
@@ -34,19 +48,19 @@ class SquareTest {
     }
 
     @ParameterizedTest
-    @MethodSource("exceptionsArguments")
-    void shouldThrowExceptionForInvalidSideConstructorArguments(double argument) {
-        assertThrows(IllegalArgumentException.class, () -> new Square(argument));
+    @MethodSource("invalidSideArguments")
+    void shouldThrowExceptionForInvalidSidePassedToConstructor(double side) {
+        assertThrows(IllegalArgumentException.class, () -> new Square(side));
     }
 
     @ParameterizedTest
-    @MethodSource("exceptionsArguments")
-    void shouldThrowExceptionForInvalidSideSetterArguments(double argument) {
+    @MethodSource("invalidSideArguments")
+    void shouldThrowExceptionForInvalidSidePassedToSetter(double side) {
         Square square = new Square();
-        assertThrows(IllegalArgumentException.class, () -> square.setSide(argument));
+        assertThrows(IllegalArgumentException.class, () -> square.setSide(side));
     }
 
-    private static Stream<Arguments> exceptionsArguments() {
+    private static Stream<Arguments> invalidSideArguments() {
         return Stream.of(
                 Arguments.of(-1.0),
                 Arguments.of(-10.0),

@@ -13,9 +13,25 @@ class TrapezoidTest {
 
     @ParameterizedTest
     @MethodSource("calculateAreaArguments")
-    public void shouldCalculateArea(double base, double leg, double height, double expected) {
+    public void shouldCalculateAreaBasedOnConstructor(double base, double leg, double height, double expected) {
         //given
         Trapezoid trapezoid = new Trapezoid(base, leg, height);
+
+        //when
+        double result = trapezoid.calculateArea();
+
+        //then
+        assertEquals(expected, result);
+    }
+
+    @ParameterizedTest
+    @MethodSource("calculateAreaArguments")
+    public void shouldCalculateAreaBasedOnSetters(double base, double leg, double height, double expected) {
+        //given
+        Trapezoid trapezoid = new Trapezoid();
+        trapezoid.setBase(base);
+        trapezoid.setLeg(leg);
+        trapezoid.setHeight(height);
 
         //when
         double result = trapezoid.calculateArea();
@@ -34,45 +50,45 @@ class TrapezoidTest {
     }
 
     @ParameterizedTest
-    @MethodSource("exceptionsArguments")
-    void shouldThrowExceptionForInvalidBaseConstructorArguments(double argument) {
-        assertThrows(IllegalArgumentException.class, () -> new Trapezoid(argument, 0.0, 0.0));
+    @MethodSource("invalidBaseLegHeightArguments")
+    void shouldThrowExceptionForInvalidBasePassedToConstructor(double base) {
+        assertThrows(IllegalArgumentException.class, () -> new Trapezoid(base, 0.0, 0.0));
     }
 
     @ParameterizedTest
-    @MethodSource("exceptionsArguments")
-    void shouldThrowExceptionForInvalidLegConstructorArguments(double argument) {
-        assertThrows(IllegalArgumentException.class, () -> new Trapezoid(0.0, argument, 0.0));
+    @MethodSource("invalidBaseLegHeightArguments")
+    void shouldThrowExceptionForInvalidLegPassedToConstructor(double leg) {
+        assertThrows(IllegalArgumentException.class, () -> new Trapezoid(0.0, leg, 0.0));
     }
 
     @ParameterizedTest
-    @MethodSource("exceptionsArguments")
-    void shouldThrowExceptionForInvalidHeightConstructorArguments(double argument) {
-        assertThrows(IllegalArgumentException.class, () -> new Trapezoid(0.0, 0.0, argument));
+    @MethodSource("invalidBaseLegHeightArguments")
+    void shouldThrowExceptionForInvalidHeightPassedToConstructor(double height) {
+        assertThrows(IllegalArgumentException.class, () -> new Trapezoid(0.0, 0.0, height));
     }
 
     @ParameterizedTest
-    @MethodSource("exceptionsArguments")
-    void shouldThrowExceptionForInvalidBaseSetterArguments(double argument) {
+    @MethodSource("invalidBaseLegHeightArguments")
+    void shouldThrowExceptionForInvalidBasePassedToSetter(double base) {
         Trapezoid trapezoid = new Trapezoid();
-        assertThrows(IllegalArgumentException.class, () -> trapezoid.setBase(argument));
+        assertThrows(IllegalArgumentException.class, () -> trapezoid.setBase(base));
     }
 
     @ParameterizedTest
-    @MethodSource("exceptionsArguments")
-    void shouldThrowExceptionForInvalidLegSetterArguments(double argument) {
+    @MethodSource("invalidBaseLegHeightArguments")
+    void shouldThrowExceptionForInvalidLegPassedToSetter(double leg) {
         Trapezoid trapezoid = new Trapezoid();
-        assertThrows(IllegalArgumentException.class, () -> trapezoid.setLeg(argument));
+        assertThrows(IllegalArgumentException.class, () -> trapezoid.setLeg(leg));
     }
 
     @ParameterizedTest
-    @MethodSource("exceptionsArguments")
-    void shouldThrowExceptionForInvalidHeightSetterArguments(double argument) {
+    @MethodSource("invalidBaseLegHeightArguments")
+    void shouldThrowExceptionForInvalidHeightPassedToSetter(double height) {
         Trapezoid trapezoid = new Trapezoid();
-        assertThrows(IllegalArgumentException.class, () -> trapezoid.setHeight(argument));
+        assertThrows(IllegalArgumentException.class, () -> trapezoid.setHeight(height));
     }
 
-    private static Stream<Arguments> exceptionsArguments() {
+    private static Stream<Arguments> invalidBaseLegHeightArguments() {
         return Stream.of(
                 Arguments.of(-1.0),
                 Arguments.of(-10.0),

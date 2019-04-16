@@ -13,9 +13,24 @@ class TriangleTest {
 
     @ParameterizedTest
     @MethodSource("calculateAreaArguments")
-    public void shouldCalculateArea(double base, double height, double expected) {
+    public void shouldCalculateAreaBasedOnConstructor(double base, double height, double expected) {
         //given
         Triangle triangle = new Triangle(base, height);
+
+        //when
+        double result = triangle.calculateArea();
+
+        //then
+        assertEquals(expected, result);
+    }
+
+    @ParameterizedTest
+    @MethodSource("calculateAreaArguments")
+    public void shouldCalculateAreaBasedOnSetters(double base, double height, double expected) {
+        //given
+        Triangle triangle = new Triangle();
+        triangle.setBase(base);
+        triangle.setHeight(height);
 
         //when
         double result = triangle.calculateArea();
@@ -34,32 +49,32 @@ class TriangleTest {
     }
 
     @ParameterizedTest
-    @MethodSource("exceptionsArguments")
-    void shouldThrowExceptionForInvalidBaseConstructorArguments(double argument) {
-        assertThrows(IllegalArgumentException.class, () -> new Triangle(argument, 0.0));
+    @MethodSource("invalidBaseHeightArguments")
+    void shouldThrowExceptionForInvalidBasePassedToConstructor(double base) {
+        assertThrows(IllegalArgumentException.class, () -> new Triangle(base, 0.0));
     }
 
     @ParameterizedTest
-    @MethodSource("exceptionsArguments")
-    void shouldThrowExceptionForInvalidHeightConstructorArguments(double argument) {
-        assertThrows(IllegalArgumentException.class, () -> new Triangle(0.0, argument));
+    @MethodSource("invalidBaseHeightArguments")
+    void shouldThrowExceptionForInvalidHeightPassedToConstructor(double height) {
+        assertThrows(IllegalArgumentException.class, () -> new Triangle(0.0, height));
     }
 
     @ParameterizedTest
-    @MethodSource("exceptionsArguments")
-    void shouldThrowExceptionForInvalidBaseSetterArguments(double argument) {
+    @MethodSource("invalidBaseHeightArguments")
+    void shouldThrowExceptionForInvalidBasePassedToSetter(double base) {
         Triangle triangle = new Triangle();
-        assertThrows(IllegalArgumentException.class, () -> triangle.setBase(argument));
+        assertThrows(IllegalArgumentException.class, () -> triangle.setBase(base));
     }
 
     @ParameterizedTest
-    @MethodSource("exceptionsArguments")
-    void shouldThrowExceptionForInvalidHeightSetterArguments(double argument) {
+    @MethodSource("invalidBaseHeightArguments")
+    void shouldThrowExceptionForInvalidHeightPassedToSetter(double height) {
         Triangle triangle = new Triangle();
-        assertThrows(IllegalArgumentException.class, () -> triangle.setHeight(argument));
+        assertThrows(IllegalArgumentException.class, () -> triangle.setHeight(height));
     }
 
-    private static Stream<Arguments> exceptionsArguments() {
+    private static Stream<Arguments> invalidBaseHeightArguments() {
         return Stream.of(
                 Arguments.of(-1.0),
                 Arguments.of(-10.0),

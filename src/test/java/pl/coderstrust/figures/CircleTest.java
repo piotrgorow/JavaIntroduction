@@ -24,6 +24,20 @@ class CircleTest {
         assertEquals(expected, result);
     }
 
+    @ParameterizedTest
+    @MethodSource("calculateAreaArguments")
+    public void shouldCalculateAreaBasedOnSetter(double radius, double expected) {
+        //given
+        Circle circle = new Circle();
+        circle.setRadius(radius);
+
+        //when
+        double result = circle.calculateArea();
+
+        //then
+        assertEquals(expected, result);
+    }
+
     private static Stream<Arguments> calculateAreaArguments() {
         return Stream.of(
                 Arguments.of(0.0, 0.0),
@@ -34,16 +48,16 @@ class CircleTest {
     }
 
     @ParameterizedTest
-    @MethodSource("exceptionsArguments")
+    @MethodSource("invalidRadiusArguments")
     void shouldThrowExceptionForInvalidRadiusPassedToConstructor(double radius) {
-        assertThrows(IllegalArgumentException.class, () -> new Circle(argument));
+        assertThrows(IllegalArgumentException.class, () -> new Circle(radius));
     }
 
     @ParameterizedTest
-    @MethodSource("exceptionsArguments")
+    @MethodSource("invalidRadiusArguments")
     void shouldThrowExceptionForInvalidRadiusPassedToSetter(double radius) {
         Circle circle = new Circle();
-        assertThrows(IllegalArgumentException.class, () -> circle.setRadius(argument));
+        assertThrows(IllegalArgumentException.class, () -> circle.setRadius(radius));
     }
 
     private static Stream<Arguments> invalidRadiusArguments() {
