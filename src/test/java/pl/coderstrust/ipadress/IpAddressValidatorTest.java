@@ -17,7 +17,7 @@ class IpAddressValidatorTest {
 
     @ParameterizedTest
     @MethodSource("invalidIpAddresses")
-    void shouldReturnFalseForInvalidIpAddresses(String ipAddress) {
+    void shouldReturnFalseForInvalidIpAddress(String ipAddress) {
         //when
         boolean result = IpAddressValidator.isIpAddress(ipAddress);
 
