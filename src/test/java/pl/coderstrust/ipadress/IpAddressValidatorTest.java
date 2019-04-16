@@ -1,4 +1,4 @@
-package pl.coderstrust.ipadress;
+package pl.coderstrust.ipaddress;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Disabled;
