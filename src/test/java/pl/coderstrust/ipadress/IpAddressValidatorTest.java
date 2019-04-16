@@ -40,7 +40,7 @@ class IpAddressValidatorTest {
 
     @ParameterizedTest
     @MethodSource("validIpAddresses")
-    void shouldReturnTrueForValidIpAddresses(String ipAddress) {
+    void shouldReturnTrueForValidIpAddress(String ipAddress) {
         //when
         boolean result = IpAddressValidator.isIpAddress(ipAddress);
 
