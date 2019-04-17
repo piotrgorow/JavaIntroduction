@@ -14,45 +14,29 @@ class FileProcessorTest {
     private List<String> expected = Arrays.asList("0 1 2 3 4 3 2 1 0", "4 3 2 1 0 1 2 3 4", " 1 2 3 4 ", "4 3 2 1");
 
     @Test
-    void shouldProperReadFromFile() {
+    void shouldProperReadFromFile() throws IOException {
         //when
-        List<String> result = null;
-        try {
-            result = fileProcessor.readLinesFromFile("readTest.txt");
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        List<String> result;
+        result = fileProcessor.readLinesFromFile("readTest.txt");
 
         //then
         assertArrayEquals(expected.toArray(), result.toArray());
     }
 
     @Test
-    void shouldProperWriteToFile() {
+    void shouldProperWriteToFile() throws IOException {
         //when
-        try {
-            fileProcessor.writeLinesToFile(expected, "writeTest.txt");
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        List<String> result = null;
-        try {
-            result = fileProcessor.readLinesFromFile("writeTest.txt");
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        fileProcessor.writeLinesToFile(expected, "writeTest.txt");
+        List<String> result;
+        result = fileProcessor.readLinesFromFile("writeTest.txt");
 
         //then
         assertArrayEquals(expected.toArray(), result.toArray());
     }
 
     @AfterAll
-    private static void removeTestFile() {
+    private static void removeTestFile() throws IOException {
         FileProcessor fileProcessor = new FileProcessor();
-        try {
-            fileProcessor.deleteFile("writeTest.txt");
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        fileProcessor.deleteFile("writeTest.txt");
     }
 }

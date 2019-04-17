@@ -16,6 +16,7 @@ class ProcessorTest {
 
     @Mock
     private NumbersProcessor numbersProcessor = mock(NumbersProcessor.class);
+
     @Mock
     private FileProcessor fileProcessor = mock(FileProcessor.class);
 
@@ -23,29 +24,17 @@ class ProcessorTest {
     private Processor processor = new Processor(numbersProcessor, fileProcessor);
 
     @Test
-    void shouldProcessProvidedInputFileAndSaveResultToProvidedOutputFile() {
+    void shouldProcessProvidedInputFileAndSaveResultToProvidedOutputFile() throws IOException {
         // given
-        try {
-            when(fileProcessor.readLinesFromFile("1000.txt")).thenReturn(Arrays.asList("1 2 3"));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        when(fileProcessor.readLinesFromFile("1000.txt")).thenReturn(Arrays.asList("1 2 3"));
         when(numbersProcessor.processLine("1 2 3")).thenReturn("1+2+3=6");
 
         // when
         processor.process("1000.txt", "result.txt");
 
         // then
-        try {
-            verify(fileProcessor).readLinesFromFile("1000.txt");
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        verify(fileProcessor).readLinesFromFile("1000.txt");
         verify(numbersProcessor).processLine("1 2 3");
-        try {
-            verify(fileProcessor).writeLinesToFile(List.of("1+2+3=6"), "result.txt");
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        verify(fileProcessor).writeLinesToFile(List.of("1+2+3=6"), "result.txt");
     }
 }
