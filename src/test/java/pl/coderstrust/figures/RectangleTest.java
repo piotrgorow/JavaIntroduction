@@ -13,7 +13,7 @@ class RectangleTest {
 
     @ParameterizedTest
     @MethodSource("calculateAreaArguments")
-    public void shouldCalculateAreaBasedOnConstructor(double sideA, double sideB, double expected) {
+    void shouldCalculateAreaBasedOnConstructor(double sideA, double sideB, double expected) {
         //given
         Rectangle rectangle = new Rectangle(sideA, sideB);
 
@@ -26,7 +26,7 @@ class RectangleTest {
 
     @ParameterizedTest
     @MethodSource("calculateAreaArguments")
-    public void shouldCalculateAreaBasedOnSetters(double sideA, double sideB, double expected) {
+    void shouldCalculateAreaBasedOnSetters(double sideA, double sideB, double expected) {
         //given
         Rectangle rectangle = new Rectangle();
         rectangle.setSideA(sideA);

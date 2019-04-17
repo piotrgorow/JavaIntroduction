@@ -13,7 +13,7 @@ class TrapezoidTest {
 
     @ParameterizedTest
     @MethodSource("calculateAreaArguments")
-    public void shouldCalculateAreaBasedOnConstructor(double base, double leg, double height, double expected) {
+    void shouldCalculateAreaBasedOnConstructor(double base, double leg, double height, double expected) {
         //given
         Trapezoid trapezoid = new Trapezoid(base, leg, height);
 
@@ -26,7 +26,7 @@ class TrapezoidTest {
 
     @ParameterizedTest
     @MethodSource("calculateAreaArguments")
-    public void shouldCalculateAreaBasedOnSetters(double base, double leg, double height, double expected) {
+    void shouldCalculateAreaBasedOnSetters(double base, double leg, double height, double expected) {
         //given
         Trapezoid trapezoid = new Trapezoid();
         trapezoid.setBase(base);

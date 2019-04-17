@@ -13,7 +13,7 @@ class SquareTest {
 
     @ParameterizedTest
     @MethodSource("calculateAreaArguments")
-    public void shouldCalculateAreaBasedOnConstructor(double side, double expected) {
+    void shouldCalculateAreaBasedOnConstructor(double side, double expected) {
         //given
         Square square = new Square(side);
 
@@ -26,7 +26,7 @@ class SquareTest {
 
     @ParameterizedTest
     @MethodSource("calculateAreaArguments")
-    public void shouldCalculateAreaBasedOnSetter(double side, double expected) {
+    void shouldCalculateAreaBasedOnSetter(double side, double expected) {
         //given
         Square square = new Square();
         square.setSide(side);

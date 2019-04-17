@@ -13,7 +13,7 @@ class TriangleTest {
 
     @ParameterizedTest
     @MethodSource("calculateAreaArguments")
-    public void shouldCalculateAreaBasedOnConstructor(double base, double height, double expected) {
+    void shouldCalculateAreaBasedOnConstructor(double base, double height, double expected) {
         //given
         Triangle triangle = new Triangle(base, height);
 
@@ -26,7 +26,7 @@ class TriangleTest {
 
     @ParameterizedTest
     @MethodSource("calculateAreaArguments")
-    public void shouldCalculateAreaBasedOnSetters(double base, double height, double expected) {
+    void shouldCalculateAreaBasedOnSetters(double base, double height, double expected) {
         //given
         Triangle triangle = new Triangle();
         triangle.setBase(base);

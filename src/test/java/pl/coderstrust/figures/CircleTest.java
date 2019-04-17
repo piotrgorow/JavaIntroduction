@@ -13,7 +13,7 @@ class CircleTest {
 
     @ParameterizedTest
     @MethodSource("calculateAreaArguments")
-    public void shouldCalculateAreaBasedOnConstructor(double radius, double expected) {
+    void shouldCalculateAreaBasedOnConstructor(double radius, double expected) {
         //given
         Circle circle = new Circle(radius);
 
@@ -26,7 +26,7 @@ class CircleTest {
 
     @ParameterizedTest
     @MethodSource("calculateAreaArguments")
-    public void shouldCalculateAreaBasedOnSetter(double radius, double expected) {
+    void shouldCalculateAreaBasedOnSetter(double radius, double expected) {
         //given
         Circle circle = new Circle();
         circle.setRadius(radius);
