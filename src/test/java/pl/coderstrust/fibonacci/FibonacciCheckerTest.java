@@ -20,7 +20,7 @@ class FibonacciCheckerTest {
     @ParameterizedTest
     @ValueSource(longs = {4, 6, 10, 15, 25, 35, 50, 80, 145, 232, 378, 611, 988, 1598, 2585, 4182, 6760, 10945,
             17712, 28658, 46360, 75020, 121390, 196419, 317812, 514220, 832041, 1346260})
-    void shouldTestInvalidFibonacciNumbers(long number) {
+    void shouldReturnFalseForNonFibonacciNumber(long number) {
         assertFalse(fibonacciChecker.isFibonacciNumber(number));
     }
 
