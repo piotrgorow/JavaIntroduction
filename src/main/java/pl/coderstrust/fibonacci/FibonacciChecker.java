@@ -12,7 +12,7 @@ public class FibonacciChecker {
     }
 
     private static boolean isPerfectSquare(long number) {
-        long s = (long) Math.sqrt(number);
+        long squareRoot = (long) Math.sqrt(number);
         return (s * s == number);
     }
 }
