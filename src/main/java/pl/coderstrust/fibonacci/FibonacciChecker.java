@@ -4,7 +4,7 @@ import java.util.HashMap;
 
 public class FibonacciChecker {
 
-    private static HashMap<Long, Boolean> hashMap = new HashMap<>();
+    private static HashMap<Long, Boolean> cache = new HashMap<>();
 
     public static boolean isFibonacciNumber(long number) {
         if (number < 1) {
