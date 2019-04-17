@@ -14,7 +14,7 @@ class FileProcessorTest {
     private List<String> expected = Arrays.asList("0 1 2 3 4 3 2 1 0", "4 3 2 1 0 1 2 3 4", " 1 2 3 4 ", "4 3 2 1");
 
     @Test
-    public void shouldProperReadFromFile() {
+    void shouldProperReadFromFile() {
         //when
         List<String> result = null;
         try {
@@ -28,7 +28,7 @@ class FileProcessorTest {
     }
 
     @Test
-    public void shouldProperWriteToFile() {
+    void shouldProperWriteToFile() {
         //when
         try {
             fileProcessor.writeLinesToFile(expected, "writeTest.txt");

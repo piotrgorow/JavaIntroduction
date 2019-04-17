@@ -23,7 +23,7 @@ class ProcessorTest {
     private Processor processor = new Processor(numbersProcessor, fileProcessor);
 
     @Test
-    public void shouldProcessProvidedInputFileAndSaveResultToProvidedOutputFile() {
+    void shouldProcessProvidedInputFileAndSaveResultToProvidedOutputFile() {
         // given
         try {
             when(fileProcessor.readLinesFromFile("1000.txt")).thenReturn(Arrays.asList("1 2 3"));

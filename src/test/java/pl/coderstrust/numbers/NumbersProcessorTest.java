@@ -12,7 +12,7 @@ class NumbersProcessorTest {
 
     @ParameterizedTest
     @MethodSource("parameters")
-    public void shouldTestNumbers(String given, String expected) {
+    void shouldTestNumbers(String given, String expected) {
         //when
         String result = numbersProcessor.processLine(given);
 
