@@ -8,7 +8,7 @@ public class FibonacciChecker {
 
     public static boolean isFibonacciNumber(long number) {
         if (number < 1) {
-            throw new IllegalArgumentException("Number cannot be less then zero.");
+            throw new IllegalArgumentException("Number cannot be less then one.");
         }
         if (hashMap.containsKey(number)) {
             return hashMap.get(number);
