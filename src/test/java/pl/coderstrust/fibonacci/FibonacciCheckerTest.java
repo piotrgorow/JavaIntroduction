@@ -26,7 +26,7 @@ class FibonacciCheckerTest {
 
     @ParameterizedTest
     @ValueSource(longs = {0, -1, -2, -10, -50, -100, -1000})
-    void shouldThrowExceptionForInvalidNumbers(long number) {
+    void shouldThrowExceptionForInvalidNumber(long number) {
         assertThrows(IllegalArgumentException.class, () -> fibonacciChecker.isFibonacciNumber(number));
     }
 }
