@@ -11,11 +11,11 @@ import java.util.Arrays;
 public class NumbersProcessorStream {
 
     public void process(String inputFilePath, String outputFilePath) throws IOException {
-        if (inputFilePath == null) {
-            throw new IllegalArgumentException("");
+        if (inputFilePath == null || inputFilePath.equals("")) {
+            throw new IllegalArgumentException("Parameter inputPath cannot be null or empty.");
         }
-        if (outputFilePath == null) {
-            throw new IllegalArgumentException("");
+        if (outputFilePath == null || outputFilePath.equals("")) {
+            throw new IllegalArgumentException("Parameter inputPath cannot be null or empty.");
         }
         File outputFile = new File(outputFilePath);
         FileOutputStream fileOutputStream = new FileOutputStream(outputFile);
