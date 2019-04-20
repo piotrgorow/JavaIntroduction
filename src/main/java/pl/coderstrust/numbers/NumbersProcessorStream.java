@@ -15,7 +15,7 @@ public class NumbersProcessorStream {
             throw new IllegalArgumentException("Parameter inputPath cannot be null or empty.");
         }
         if (outputFilePath == null || outputFilePath.equals("")) {
-            throw new IllegalArgumentException("Parameter inputPath cannot be null or empty.");
+            throw new IllegalArgumentException("Parameter outputPath cannot be null or empty.");
         }
         File outputFile = new File(outputFilePath);
         FileOutputStream fileOutputStream = new FileOutputStream(outputFile);
