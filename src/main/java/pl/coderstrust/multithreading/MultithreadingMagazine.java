@@ -1,46 +1,37 @@
 package pl.coderstrust.multithreading;
 
-import java.util.NoSuchElementException;
 import java.util.concurrent.ArrayBlockingQueue;
 import java.util.concurrent.BlockingQueue;
+import java.util.concurrent.atomic.AtomicInteger;
 
 public class MultithreadingMagazine {
-    private BlockingQueue<Integer> queue = new ArrayBlockingQueue<>(10);
 
-    private Runnable producer = () -> {
-        int i = 0;
-        while (true) {
-            try {
-                queue.add(i++);
-                System.out.println("Producer put: " + i + " remaining queue " + queue.remainingCapacity());
-            } catch (IllegalStateException e) {
-                System.out.println("Queue is full - producer is waiting...");
-                try {
-                    Thread.sleep((int) (Math.random() * 1000));
-                } catch (InterruptedException ex) {
-                    ex.printStackTrace();
-                }
-            }
-        }
-    };
-    private Runnable consumer = () -> {
-        while (true) {
-            try {
-                System.out.println("Consumer take: " + queue.remove() + " remaining queue " + queue.remainingCapacity());
-            } catch (NoSuchElementException e) {
-                System.out.println("Queue is empty - consumer is waiting...");
-                try {
-                    Thread.sleep((int) (Math.random() * 1000));
-                } catch (InterruptedException ex) {
-                    ex.printStackTrace();
-                }
-            }
-        }
-    };
+    private void oneProducerAndOneConsumer() {
+        BlockingQueue<Integer> queue = new ArrayBlockingQueue<>(10);
+        AtomicInteger counter = new AtomicInteger(0);
+        new Thread(new Producer(queue, 500, "Producer-1", counter)).start();
+        new Thread(new Consumer(queue, 500, "Consumer-1")).start();
+    }
 
-    public static void main(String[] args) {
-        MultithreadingMagazine multithreadingMagazine = new MultithreadingMagazine();
-        new Thread(multithreadingMagazine.producer).start();
-        new Thread(multithreadingMagazine.producer).start();
+    private void fiveProducersAndOneConsumer() {
+        BlockingQueue<Integer> queue = new ArrayBlockingQueue<>(10);
+        AtomicInteger counter = new AtomicInteger(0);
+        new Thread(new Producer(queue, 500, "Producer-1", counter)).start();
+        new Thread(new Producer(queue, 500, "Producer-2", counter)).start();
+        new Thread(new Producer(queue, 500, "Producer-3", counter)).start();
+        new Thread(new Producer(queue, 500, "Producer-4", counter)).start();
+        new Thread(new Producer(queue, 500, "Producer-5", counter)).start();
+        new Thread(new Consumer(queue, 500, "Consumer-1")).start();
+    }
+
+    private void oneProducerAndFiveConsumers() {
+        BlockingQueue<Integer> queue = new ArrayBlockingQueue<>(10);
+        AtomicInteger counter = new AtomicInteger(0);
+        new Thread(new Producer(queue, 500, "Producer-1", counter)).start();
+        new Thread(new Consumer(queue, 500, "Consumer-1")).start();
+        new Thread(new Consumer(queue, 500, "Consumer-2")).start();
+        new Thread(new Consumer(queue, 500, "Consumer-3")).start();
+        new Thread(new Consumer(queue, 500, "Consumer-4")).start();
+        new Thread(new Consumer(queue, 500, "Consumer-5")).start();
     }
 }
