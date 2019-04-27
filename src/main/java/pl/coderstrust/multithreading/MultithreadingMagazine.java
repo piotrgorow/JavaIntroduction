@@ -6,6 +6,11 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 public class MultithreadingMagazine {
 
+    public static void main(String[] args) {
+        MultithreadingMagazine multithreadingMagazine = new MultithreadingMagazine();
+        multithreadingMagazine.fiveProducersAndOneConsumer();
+    }
+
     public void oneProducerAndOneConsumer() {
         BlockingQueue<Integer> queue = new ArrayBlockingQueue<>(10);
         AtomicInteger counter = new AtomicInteger();
