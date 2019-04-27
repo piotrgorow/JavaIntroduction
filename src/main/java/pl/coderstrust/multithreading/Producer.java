@@ -23,7 +23,7 @@ public class Producer implements Runnable {
                 Thread.sleep(insertFrequencyInMillis);
                 int count = counter.incrementAndGet();
                 queue.put(count);
-                System.out.println("Producer " + name + " put: " + counter.get() + " remaining queue " + queue.remainingCapacity());
+                System.out.printf("Producer: %s put: %d remaining queue: %d  %n", name, count,  queue.remainingCapacity());
             } catch (IllegalStateException | InterruptedException e) {
                 System.out.println("Queue is full - producer " + name + " is waiting...");
             }
