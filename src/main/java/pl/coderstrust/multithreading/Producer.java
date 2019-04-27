@@ -21,7 +21,8 @@ public class Producer implements Runnable {
         while (true) {
             try {
                 Thread.sleep(insertFrequencyInMillis);
-                queue.add(counter.incrementAndGet());
+                int count = counter.incrementAndGet();
+                queue.put(count);
                 System.out.println("Producer " + name + " put: " + counter.get() + " remaining queue " + queue.remainingCapacity());
             } catch (IllegalStateException | InterruptedException e) {
                 System.out.println("Queue is full - producer " + name + " is waiting...");
