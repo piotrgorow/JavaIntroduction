@@ -6,7 +6,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 public class MultithreadingMagazine {
 
-    private void oneProducerAndOneConsumer() {
+    public void oneProducerAndOneConsumer() {
         BlockingQueue<Integer> queue = new ArrayBlockingQueue<>(10);
         AtomicInteger counter = new AtomicInteger(0);
         new Thread(new Producer(queue, 500, "Producer-1", counter)).start();
