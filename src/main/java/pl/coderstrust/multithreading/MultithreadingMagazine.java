@@ -26,7 +26,7 @@ public class MultithreadingMagazine {
 
     private void oneProducerAndFiveConsumers() {
         BlockingQueue<Integer> queue = new ArrayBlockingQueue<>(10);
-        AtomicInteger counter = new AtomicInteger(0);
+        AtomicInteger counter = new AtomicInteger();
         new Thread(new Producer(queue, 500, "Producer-1", counter)).start();
         new Thread(new Consumer(queue, 500, "Consumer-1")).start();
         new Thread(new Consumer(queue, 500, "Consumer-2")).start();
