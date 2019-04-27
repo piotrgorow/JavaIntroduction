@@ -25,7 +25,7 @@ public class Producer implements Runnable {
                 queue.put(count);
                 System.out.printf("Producer: %s put: %d remaining queue: %d  %n", name, count,  queue.remainingCapacity());
             } catch (InterruptedException e) {
-                System.out.println("Queue is full - producer " + name + " is waiting...");
+                Thread.currentThread().interrupt();
             }
         }
     }
