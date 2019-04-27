@@ -13,7 +13,7 @@ public class MultithreadingMagazine {
         new Thread(new Consumer(queue, 500, "Consumer-1")).start();
     }
 
-    private void fiveProducersAndOneConsumer() {
+    public void fiveProducersAndOneConsumer() {
         BlockingQueue<Integer> queue = new ArrayBlockingQueue<>(10);
         AtomicInteger counter = new AtomicInteger(0);
         new Thread(new Producer(queue, 500, "Producer-1", counter)).start();
