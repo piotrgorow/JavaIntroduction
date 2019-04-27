@@ -20,7 +20,7 @@ public class Consumer implements Runnable {
             try {
                 Thread.sleep(retrieveFrequencyInMillis);
                 System.out.printf("Consumer: %s take: %d, remaining queue: %d %n", name, queue.take(), queue.remainingCapacity());
-            } catch (NoSuchElementException | InterruptedException e) {
+            } catch (InterruptedException e) {
                 System.out.println("Queue is empty - consumer " + name + " is waiting...");
             }
         }
