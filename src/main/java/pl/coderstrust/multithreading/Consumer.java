@@ -19,7 +19,7 @@ public class Consumer implements Runnable {
         while (true) {
             try {
                 Thread.sleep(retrieveFrequencyInMillis);
-                System.out.println("Consumer " + name + " take: " + queue.remove() + " remaining queue " + queue.remainingCapacity());
+                System.out.printf("Consumer: %s take: %d, remaining queue: %d %n", name, queue.take(), queue.remainingCapacity());
             } catch (NoSuchElementException | InterruptedException e) {
                 System.out.println("Queue is empty - consumer " + name + " is waiting...");
             }
