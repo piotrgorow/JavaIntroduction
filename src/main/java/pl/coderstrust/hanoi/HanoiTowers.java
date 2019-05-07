@@ -7,7 +7,14 @@ public class HanoiTowers {
     private final int numberOfDiscs;
     private static Stack<Integer> C = new Stack<>();
 
-    public static void doTowers(int topN, Stack<Integer> from, Stack<Integer> inter, Stack<Integer> to, char labelFrom, char labelInter, char labelTo) {
+    private void play(int numberOfDiscs, Stack<Integer> sourceTower, Stack<Integer> tempTower, Stack<Integer> destinationTower) {
+        if (numberOfDiscs > 0) {
+            play(numberOfDiscs - 1, sourceTower, destinationTower, tempTower);
+            destinationTower.push(sourceTower.pop());
+            displayTowers();
+            play(numberOfDiscs - 1, tempTower, sourceTower, destinationTower);
+        }
+    }
         if (topN == 1) {
             System.out.println("Moving the disk 1 from " + labelFrom + " to " + labelTo);
             to.push(from.pop());
