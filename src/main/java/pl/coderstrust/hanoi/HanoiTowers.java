@@ -3,7 +3,7 @@ package pl.coderstrust.hanoi;
 import java.util.Stack;
 
 public class HanoiTowers {
-    private static Stack<Integer> A = new Stack<>();
+    private final Stack<Integer>[] towers;
     private static Stack<Integer> B = new Stack<>();
     private static Stack<Integer> C = new Stack<>();
 
