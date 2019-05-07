@@ -28,7 +28,19 @@ public class HanoiTowers {
         }
     }
 
-    private static void printTowers() {
+    private void printTowers() {
+        StringBuilder hanoiBuilder = new StringBuilder();
+        hanoiBuilder.append(" A | B | C").append("\n");
+        for (int i = numberOfDiscs - 1; i >= 0; i--) {
+            for (int j = 0; j < 3; j++) {
+                String discValue = towers[j].size() > i ? String.valueOf(towers[j].get(i)) : "-";
+                hanoiBuilder.append(String.format("%3s ", discValue + " "));
+            }
+            System.out.println(hanoiBuilder.toString());
+            hanoiBuilder.setLength(0);
+        }
+        System.out.println();
+    }
         System.out.println("A " + A);
         System.out.println("B " + B);
         System.out.println("C " + C);
