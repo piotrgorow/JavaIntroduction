@@ -4,7 +4,7 @@ import java.util.Stack;
 
 public class HanoiTowers {
     private final Stack<Integer>[] towers;
-    private static Stack<Integer> B = new Stack<>();
+    private final int numberOfDiscs;
     private static Stack<Integer> C = new Stack<>();
 
     public static void doTowers(int topN, Stack<Integer> from, Stack<Integer> inter, Stack<Integer> to, char labelFrom, char labelInter, char labelTo) {
