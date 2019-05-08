@@ -18,7 +18,7 @@ public class HanoiTowers {
 
     public HanoiTowers(Stack<Integer>[] towers) {
         if (towers == null) {
-            throw new IllegalArgumentException("Parameter towers cannot be null.");
+            throw new IllegalArgumentException("Towers cannot be null.");
         }
         if (towers.length != 3) {
             throw new IllegalArgumentException("Parameter towers can contain only three towers.");
