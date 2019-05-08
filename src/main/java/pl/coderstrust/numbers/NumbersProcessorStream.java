@@ -30,7 +30,7 @@ public class NumbersProcessorStream {
                     String numbers = Arrays.stream(arrayOfNumbers)
                             .reduce((number1, number2) -> String.format("%s + %s", number1, number2))
                             .get();
-                    outputStreamWriter.write(String.format("%s = %d\n", numbers, sumOfNumbers));
+                    //outputStreamWriter.write(String.format("%s = %d\n", numbers, sumOfNumbers));
                 });
         outputStreamWriter.close();
     }
