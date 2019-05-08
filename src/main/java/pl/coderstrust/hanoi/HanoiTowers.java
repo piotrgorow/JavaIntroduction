@@ -5,26 +5,43 @@ import java.util.Stack;
 public class HanoiTowers {
     private final Stack<Integer>[] towers;
     private final int numberOfDiscs;
-    private static Stack<Integer> C = new Stack<>();
+
+    public static void main(String[] args) {
+        Stack<Integer>[] towers = new Stack[]{new Stack<Integer>(), new Stack<Integer>(), new Stack<Integer>()};
+        int numberOfDiscs = 5;
+        for (int i = numberOfDiscs; i > 0; i--) {
+            towers[0].push(i);
+        }
+        HanoiTowers hanoiTowers = new HanoiTowers(towers);
+        hanoiTowers.play();
+    }
+
+    public HanoiTowers(Stack<Integer>[] towers) {
+        if (towers == null) {
+            throw new IllegalArgumentException("Parameter towers cannot be null.");
+        }
+        if (towers.length != 3) {
+            throw new IllegalArgumentException("Parameter towers can contain only three towers.");
+        }
+        if (towers[0].empty()) {
+            throw new IllegalArgumentException("Parameter towers cannot be empty.");
+        }
+        this.towers = towers;
+        numberOfDiscs = towers[0].size();
+    }
+
+    public Stack<Integer>[] play() {
+        printTowers();
+        play(numberOfDiscs, towers[0], towers[1], towers[2]);
+        return towers;
+    }
 
     private void play(int numberOfDiscs, Stack<Integer> sourceTower, Stack<Integer> tempTower, Stack<Integer> destinationTower) {
         if (numberOfDiscs > 0) {
             play(numberOfDiscs - 1, sourceTower, destinationTower, tempTower);
             destinationTower.push(sourceTower.pop());
-            displayTowers();
+            printTowers();
             play(numberOfDiscs - 1, tempTower, sourceTower, destinationTower);
-        }
-    }
-        if (topN == 1) {
-            System.out.println("Moving the disk 1 from " + labelFrom + " to " + labelTo);
-            to.push(from.pop());
-            printTowers();
-        } else {
-            doTowers(topN - 1, from, to, inter, labelFrom, labelTo, labelInter);
-            System.out.println("Moving the disk " + topN + " from " + labelFrom + " to " + labelTo);
-            to.push(from.pop());
-            printTowers();
-            doTowers(topN - 1, inter, from, to, labelInter, labelFrom, labelTo);
         }
     }
 
@@ -40,18 +57,5 @@ public class HanoiTowers {
             hanoiBuilder.setLength(0);
         }
         System.out.println();
-    }
-        System.out.println("A " + A);
-        System.out.println("B " + B);
-        System.out.println("C " + C);
-    }
-
-    public static void main(String[] args) {
-        int nDisks = 3;
-        for (int i = nDisks; i > 0; i--) {
-            A.push(i);
-        }
-        printTowers();
-        doTowers(nDisks, A, B, C, 'A', 'B', 'C');
     }
 }
