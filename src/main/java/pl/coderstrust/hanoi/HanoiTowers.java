@@ -21,7 +21,7 @@ public class HanoiTowers {
             throw new IllegalArgumentException("Towers cannot be null.");
         }
         if (towers.length != 3) {
-            throw new IllegalArgumentException("Parameter towers can contain only three towers.");
+            throw new IllegalArgumentException("Towers can contain only three towers.");
         }
         if (towers[0].empty()) {
             throw new IllegalArgumentException("First tower cannot be empty.");
