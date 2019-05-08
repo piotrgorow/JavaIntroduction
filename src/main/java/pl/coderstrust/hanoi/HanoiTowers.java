@@ -24,7 +24,7 @@ public class HanoiTowers {
             throw new IllegalArgumentException("Parameter towers can contain only three towers.");
         }
         if (towers[0].empty()) {
-            throw new IllegalArgumentException("Parameter towers cannot be empty.");
+            throw new IllegalArgumentException("First tower cannot be empty.");
         }
         this.towers = towers;
         numberOfDiscs = towers[0].size();
