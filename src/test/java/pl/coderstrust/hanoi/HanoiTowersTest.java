@@ -61,6 +61,6 @@ class HanoiTowersTest {
         towers[1].push(1);
         towers[2] = new Stack<>();
         towers[2].push(1);
-        assertThrows(IllegalArgumentException.class, () -> new HanoiTowers(new Stack[]{new Stack<Integer>(), new Stack<Integer>(), new Stack<Integer>()}));
+        assertThrows(IllegalArgumentException.class, () -> new HanoiTowers(towers));
     }
 }
