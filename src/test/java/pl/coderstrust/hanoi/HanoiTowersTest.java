@@ -23,7 +23,6 @@ class HanoiTowersTest {
         towers[0].push(3);
         towers[0].push(2);
         towers[0].push(1);
-        HanoiTowers hanoiTowers = new HanoiTowers(towers);
         Stack<Integer>[] expected = new Stack[3];
         expected[0] = new Stack<>();
         expected[1] = new Stack<>();
@@ -35,6 +34,7 @@ class HanoiTowersTest {
         expected[2].push(3);
         expected[2].push(2);
         expected[2].push(1);
+        HanoiTowers hanoiTowers = new HanoiTowers(towers);
 
         //when
         Stack<Integer>[] result = hanoiTowers.play();
