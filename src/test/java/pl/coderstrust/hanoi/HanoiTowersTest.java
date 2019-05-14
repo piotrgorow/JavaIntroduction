@@ -32,7 +32,7 @@ class HanoiTowersTest {
     }
 
     @Test
-    void shouldTrowExceptionWhenTowersPassedToConstructorIsNull() {
+    void shouldThrowExceptionForNullAsTowers() {
         assertThrows(IllegalArgumentException.class, () -> new HanoiTowers(null));
     }
 
