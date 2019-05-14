@@ -37,7 +37,7 @@ class HanoiTowersTest {
     }
 
     @Test
-    void shouldTrowExceptionWhenTowersPassedToConstructorIsLessThanThree() {
+    void shouldThrowExceptionForInvalidNumberOfTowers() {
         assertThrows(IllegalArgumentException.class, () -> new HanoiTowers(new Stack[]{new Stack<Integer>(), new Stack<Integer>()}));
     }
 
