@@ -50,7 +50,7 @@ class HanoiTowersTest {
 
     @Test
     void shouldThrowExceptionForInvalidNumberOfTowers() {
-        assertThrows(IllegalArgumentException.class, () -> new HanoiTowers(new Stack[]{new Stack<Integer>(), new Stack<Integer>()}));
+        assertThrows(IllegalArgumentException.class, () -> new HanoiTowers(new Stack[2]));
     }
 
     @Test
