@@ -12,7 +12,13 @@ class HanoiTowersTest {
     @Test
     void shouldReturnCorrectArrayOfTowersWhenPassedFourElements() {
         //given
-        Stack<Integer>[] towers = new Stack[]{new Stack<Integer>(), new Stack<Integer>(), new Stack<Integer>()};
+        Stack<Integer>[] towers = new Stack[3];
+        towers[0] = new Stack<>();
+        towers[0].push(3);
+        towers[0].push(2);
+        towers[0].push(1);
+        towers[1] = new Stack<>();
+        towers[2] = new Stack<>();
         towers[0].push(4);
         towers[0].push(3);
         towers[0].push(2);
