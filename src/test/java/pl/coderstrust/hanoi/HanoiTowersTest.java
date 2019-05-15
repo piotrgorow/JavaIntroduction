@@ -10,7 +10,7 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 class HanoiTowersTest {
 
     @Test
-    void shouldReturnCorrectArrayOfTowersWhenPassedFourElements() {
+    void shouldPlayHanoiTowers() {
         //given
         Stack<Integer>[] towers = new Stack[3];
         towers[0] = new Stack<>();
